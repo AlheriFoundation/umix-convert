@@ -810,6 +810,7 @@ a { text-underline-offset: .18em; }
 .button:disabled, .button[aria-disabled="true"] { cursor: not-allowed; opacity: .58; transform: none; box-shadow: none; }
 .tool-card { min-width: 0; height: 100%; overflow: hidden; }
 .tool-card h3, .tool-card p { overflow-wrap: anywhere; }
+.tool-card h3 { min-height: 2.4em; }
 .tool-icon { flex: 0 0 auto; display: inline-grid; place-items: center; }
 .tool-icon svg { display: block; flex: 0 0 auto; }
 .category-card { min-width: 0; }
