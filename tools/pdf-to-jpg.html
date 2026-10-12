@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF to JPG Converter â€” UMiX Convert</title>
+  <meta name="description" content="Convert PDF pages to JPG images quickly and easily with UMiX Convert.">
+  <link rel="canonical" href="https://example.com/umix-convert/tools/pdf-to-jpg.html">
+  <meta property="og:title" content="PDF to JPG Converter â€” UMiX Convert">
+  <meta property="og:description" content="Convert PDF pages to JPG images quickly and easily with UMiX Convert.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/umix-convert/tools/pdf-to-jpg.html">
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="../index.html" aria-label="UMiX Convert home"><img class="logo-mark" src="../images/logo.svg" alt=""> <span>UMiX Convert</span></a>
+      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav class="main-nav" id="main-navigation" data-main-nav aria-label="Main navigation">
+        <a href="../tools.html">Tools</a><a href="../pdf-tools.html">PDF</a><a href="../image-tools.html">Images</a><a href="../document-tools.html">Documents</a><a href="../index.html#utilities">Utilities</a><a href="../index.html#how-it-works">How It Works</a>
+      </nav>
+      <div class="nav-actions"><a class="search-link" href="../index.html#tool-search">Search</a><a class="button button-primary" href="../tools.html">Explore Tools</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero tool-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">â†’</span><a href="../pdf-tools.html">PDF Tools</a><span aria-hidden="true">â†’</span><span aria-current="page">PDF to JPG</span></nav>
+        <p class="eyebrow">PDF tool</p>
+        <h1>PDF to JPG Converter</h1>
+        <p>Convert PDF pages into high-quality JPG images quickly and easily.</p>
+      </div>
+    </section>
+
+    <section class="converter-section" aria-labelledby="converter-title">
+      <div class="container converter-container">
+        <div class="converter-card">
+          <div class="converter-card-header"><div><p class="eyebrow">Browser-based processing</p><h2 id="converter-title">Choose a PDF</h2></div><span class="privacy-note">Processed in your browser</span></div>
+
+          <div class="tool-error" data-tool-error role="alert" aria-live="assertive" hidden></div>
+
+          <div class="upload-zone" data-upload-zone role="group" tabindex="0" aria-label="Choose a PDF file or drag and drop one here">
+            <input data-file-input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden>
+            <div class="upload-icon" aria-hidden="true">PDF</div>
+            <h3>Drop your PDF here</h3>
+            <p>or choose a file</p>
+            <button class="button button-primary" data-browse type="button">Browse PDF</button>
+            <small>Supported format: PDF Â· Maximum file size: 25 MB Â· Maximum 50 pages</small>
+          </div>
+
+          <div class="file-summary" data-file-summary hidden>
+            <div class="file-summary-icon" aria-hidden="true">PDF</div>
+            <div class="file-summary-details"><strong data-file-name></strong><span data-file-meta></span></div>
+            <button class="button button-secondary button-small" data-remove-file type="button">Remove file</button>
+          </div>
+
+          <div class="processing-panel" data-processing-panel hidden aria-live="polite">
+            <div class="processing-heading"><strong data-processing-label>Preparing PDF...</strong><span data-processing-count></span></div>
+            <div class="progress-track" aria-hidden="true"><span data-progress-bar></span></div>
+          </div>
+
+          <div class="converter-actions" data-converter-actions hidden><button class="button button-primary" data-convert type="button">Convert to JPG</button></div>
+
+          <div class="results-panel" data-results-panel hidden aria-labelledby="results-title">
+            <div class="results-heading"><div><p class="eyebrow">Ready to download</p><h2 id="results-title">JPG pages</h2></div><div class="results-actions"><button class="button button-primary" data-download-all type="button">Download All JPGs</button><button class="button button-secondary" data-reset type="button">Start Over</button></div></div>
+            <div class="results-grid" data-results-grid></div>
+          </div>
+        </div>
+        <p class="browser-note">Your PDF is processed in your browser and is not uploaded to our server. A modern browser with JavaScript enabled is required.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="logo" href="../index.html"><img class="logo-mark" src="../images/logo.svg" alt=""> <span>UMiX Convert</span></a><p>Convert. Compress. Simplify.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="../tools.html">Tools</a><a href="../pdf-tools.html">PDF Tools</a><a href="../image-tools.html">Image Tools</a><a href="../document-tools.html">Document Tools</a></div></div><div><h3>Company</h3><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a></div></div><div><h3>Legal</h3><div class="footer-links"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms</a></div></div></div><p class="copyright">Â© 2026 UMiX Convert. All rights reserved.</p></div></footer>
+
+<script src="../vendor/pdf.min.js"></script>
+<script src="../vendor/jszip.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pdf-to-jpg.js"></script>
+</body>
+</html>
+

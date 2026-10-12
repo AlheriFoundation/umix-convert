@@ -1,0 +1,21 @@
+# Local and private development files
+.codex/
+.vscode/
+.codegpt/
+.copilot/
+.env
+.env.*
+!.env.example
+
+# Website QA and backup artifacts
+backup-*/
+qa-stage28-evidence/
+qa-*.cjs
+
+# Temporary and generated files
+*.tmp
+*.temp
+*.log
+.DS_Store
+Thumbs.db
+
