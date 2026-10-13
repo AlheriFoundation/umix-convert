@@ -928,7 +928,7 @@ h2, h3 { letter-spacing: -.035em; }
 .footer-links { gap: 8px; }
 .footer-links a { display: inline-flex; width: fit-content; line-height: 1.45; }
 .footer a:hover { color: #fff; background: transparent; }
-.copyright { overflow-wrap: anywhere; border-top-color: #24496d; }
+.copyright { width: 100%; margin-inline: auto; overflow-wrap: anywhere; border-top-color: #24496d; text-align: center; }
 
 .breadcrumb { color: var(--muted); }
 .breadcrumb a { color: var(--navy-800); }
