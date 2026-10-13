@@ -270,7 +270,7 @@ h1 { max-width: 650px; margin-bottom: 20px; font-size: clamp(42px, 6vw, 70px); l
 .docx-preview table, .word-pdf-render-target table { width: 100%; margin: 1em 0; border-collapse: collapse; }
 .docx-preview th, .docx-preview td, .word-pdf-render-target th, .word-pdf-render-target td { padding: 6px 8px; border: 1px solid #cfd5e2; text-align: left; vertical-align: top; }
 .docx-preview img, .word-pdf-render-target img { max-width: 100%; height: auto; }
-.word-pdf-render-target { position: absolute; left: -100000px; top: 0; width: 794px; padding: 36px; overflow: visible; color: #172033; background: #fff; font: 14px/1.5 Arial, sans-serif; }
+.word-pdf-render-target { position: fixed; left: 0; top: 0; z-index: -1; width: 794px; padding: 36px; overflow: visible; color: #172033; background: #fff; font: 14px/1.5 Arial, sans-serif; }
 .counter-processing { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 74px; margin-top: 24px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: var(--wash); }
 .counter-spinner { width: 18px; height: 18px; border: 2px solid #dce1f7; border-top-color: var(--accent); border-radius: 50%; animation: counter-spin .8s linear infinite; }
 @keyframes counter-spin { to { transform: rotate(360deg); } }

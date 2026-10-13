@@ -28,7 +28,7 @@
   function safeBase(name) { return name.replace(/\.docx$/i, '').replace(/[^a-z0-9-_]+/gi, '-').replace(/^-+|-+$/g, '') || 'document'; }
   function setProgress(value, label) { const bar = $('[data-progress-bar]'); bar.style.width = `${value}%`; bar.parentElement.setAttribute('aria-valuenow', String(value)); $('[data-processing-label]').textContent = label; }
   function showProcessing(show) { $('[data-processing]').hidden = !show; }
-  function validateFile(file) { if (!file) return 'Please select a DOCX file.'; if (file.type !== DOCX_MIME || !/\.docx$/i.test(file.name)) return 'Please select a valid DOCX file. PDF, image, spreadsheet, and text files are not supported.'; if (!file.size) return 'This DOCX file is empty or invalid.'; if (file.size > MAX_FILE_SIZE) return 'This file is larger than the 25 MB limit.'; return ''; }
+  function validateFile(file) { if (!file) return 'Please select a DOCX file.'; if (!/\.docx$/i.test(file.name) || (file.type && file.type !== DOCX_MIME && file.type !== 'application/octet-stream')) return 'Please select a valid DOCX file. PDF, image, spreadsheet, and text files are not supported.'; if (!file.size) return 'This DOCX file is empty or invalid.'; if (file.size > MAX_FILE_SIZE) return 'This file is larger than the 25 MB limit.'; return ''; }
 
   async function handleFiles(files) {
     if (state.busy) return; clearError(); input.value = ''; if (files.length > 1) { showError('Please select one DOCX file at a time.'); return; } const problem = validateFile(files[0]); if (problem) { showError(problem); return; }
@@ -46,8 +46,44 @@
     finally { state.busy = false; showProcessing(false); if (!$('[data-result]').hidden) $('[data-actions]').hidden = true; else $('[data-actions]').hidden = false; }
   }
   function createRenderTarget() { const target = document.createElement('div'); target.className = 'word-pdf-render-target'; target.innerHTML = $('[data-preview]').innerHTML; document.body.append(target); return target; }
-  function renderHtmlToPdf(doc, target) { return new Promise((resolve, reject) => { try { doc.html(target, { x: 36, y: 36, width: 523, windowWidth: 794, margin: [36, 36, 36, 36], autoPaging: 'text', html2canvas: { scale: 1, useCORS: false, backgroundColor: '#ffffff' }, callback: resolve }); } catch (error) { reject(error); } }); }
-  async function validatePdf(blob) { if (!blob || blob.type !== 'application/pdf' || blob.size <= 0) throw new Error('invalid-pdf'); const loadingTask = pdfjsLib.getDocument({ data: await blob.arrayBuffer() }); const pdf = await loadingTask.promise; const pageCount = pdf.numPages; if (!pageCount) throw new Error('empty-pdf'); const firstPage = await pdf.getPage(1); if (!firstPage.getViewport({ scale: 1 })) throw new Error('invalid-pdf'); if (pdf.destroy) await pdf.destroy(); return pageCount; }
+  async function waitForRender(target) {
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const images = [...target.querySelectorAll('img')];
+    await Promise.all(images.map(image => image.complete ? image.decode().catch(() => {}) : new Promise(resolve => { image.addEventListener('load', resolve, { once: true }); image.addEventListener('error', resolve, { once: true }); })));
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    if (!target.scrollWidth || !target.scrollHeight) throw new Error('empty-render');
+  }
+  function canvasHasContent(canvas) { const context = canvas.getContext('2d', { willReadFrequently: true }); const step = Math.max(1, Math.floor(Math.min(canvas.width, canvas.height) / 160)); const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data; for (let y = 0; y < canvas.height; y += step) for (let x = 0; x < canvas.width; x += step) { const offset = (y * canvas.width + x) * 4; if (pixels[offset + 3] > 0 && pixels[offset] + pixels[offset + 1] + pixels[offset + 2] < 735) return true; } return false; }
+  async function renderHtmlToPdf(doc, target) {
+    await waitForRender(target);
+    await new Promise((resolve, reject) => {
+      try {
+        doc.html(target, {
+          x: 36,
+          y: 36,
+          width: 523,
+          windowWidth: target.scrollWidth,
+          windowHeight: target.scrollHeight,
+          margin: [36, 36, 36, 36],
+          autoPaging: 'text',
+          html2canvas: {
+            scale: 1,
+            useCORS: false,
+            backgroundColor: '#ffffff',
+            scrollX: 0,
+            scrollY: 0,
+            onclone: clonedDocument => {
+              const overlay = clonedDocument.querySelector('.html2pdf__overlay');
+              if (overlay) overlay.style.left = '0';
+            }
+          },
+          callback: resolve
+        });
+      } catch (error) { reject(error); }
+    });
+    if (!doc.getNumberOfPages()) throw new Error('empty-render');
+  }
+  async function validatePdf(blob) { if (!blob || blob.type !== 'application/pdf' || blob.size <= 0) throw new Error('invalid-pdf'); const loadingTask = pdfjsLib.getDocument({ data: await blob.arrayBuffer() }); const pdf = await loadingTask.promise; const pageCount = pdf.numPages; if (!pageCount) throw new Error('empty-pdf'); const firstPage = await pdf.getPage(1); const text = await firstPage.getTextContent(); if (!text.items.some(item => item.str && item.str.trim())) throw new Error('empty-pdf'); const viewport = firstPage.getViewport({ scale: 1 }); const canvas = document.createElement('canvas'); canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height); await firstPage.render({ canvasContext: canvas.getContext('2d'), viewport, background: '#ffffff' }).promise; if (!canvasHasContent(canvas)) throw new Error('empty-pdf'); if (pdf.destroy) await pdf.destroy(); return pageCount; }
   function revokePdfUrl() { if (state.pdfUrl) URL.revokeObjectURL(state.pdfUrl); state.pdfUrl = null; $('[data-download]').removeAttribute('href'); }
   function clearDocument() { state.token += 1; state.file = null; state.previewReady = false; revokePdfUrl(); }
   function resetView() { input.value = ''; zone.hidden = false; $('[data-file-summary]').hidden = true; $('[data-file-name]').textContent = ''; $('[data-file-meta]').textContent = ''; $('[data-preview-panel]').hidden = true; $('[data-preview]').replaceChildren(); $('[data-actions]').hidden = true; $('[data-result]').hidden = true; setProgress(0, 'Preparing documentâ€¦'); showProcessing(false); clearError(); }
