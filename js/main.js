@@ -90,6 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const footer = document.querySelector('.footer');
   if (!footer) return;
   const base = /\/tools\//.test(window.location.pathname) ? '../' : '';
+  const simpleContainer = footer.querySelector('.container');
+  if (simpleContainer && !footer.querySelector('.footer-grid')) {
+    simpleContainer.replaceChildren();
+    const links = document.createElement('nav');
+    links.className = 'footer-links';
+    [['About', 'about.html'], ['Privacy', 'privacy.html'], ['Terms', 'terms.html']].forEach(([label, page]) => {
+      const link = document.createElement('a');
+      link.href = `${base}${page}`;
+      link.textContent = label;
+      links.append(link);
+    });
+    const copyright = document.createElement('p');
+    copyright.className = 'copyright';
+    copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+    simpleContainer.append(links, copyright);
+    return;
+  }
   const legalColumn = [...footer.querySelectorAll('.footer-grid > div')].find(column => /legal/i.test(column.querySelector('h3')?.textContent || ''));
   const legalLinks = legalColumn?.querySelector('.footer-links') || footer.querySelector('.footer-links');
   [['About', 'about.html'], ['Privacy', 'privacy.html'], ['Terms', 'terms.html']].forEach(([label, page]) => {
