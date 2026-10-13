@@ -86,3 +86,20 @@
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  const base = /\/tools\//.test(window.location.pathname) ? '../' : '';
+  const legalColumn = [...footer.querySelectorAll('.footer-grid > div')].find(column => /legal/i.test(column.querySelector('h3')?.textContent || ''));
+  const legalLinks = legalColumn?.querySelector('.footer-links') || footer.querySelector('.footer-links');
+  [['About', 'about.html'], ['Privacy', 'privacy.html'], ['Terms', 'terms.html']].forEach(([label, page]) => {
+    if (!legalLinks || legalLinks.querySelector(`a[href$="${page}"]`)) return;
+    const link = document.createElement('a');
+    link.href = `${base}${page}`;
+    link.textContent = label;
+    legalLinks.append(link);
+  });
+  footer.querySelectorAll('a[href*="privacy"]').forEach(link => { link.textContent = 'Privacy'; });
+  const copyright = footer.querySelector('.copyright');
+  if (copyright) copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+});
