@@ -1101,3 +1101,33 @@ h2, h3 { letter-spacing: -.035em; }
   .about-owner { grid-template-columns: 1fr; gap: 18px; }
   .about-owner-portrait { width: min(100%, 220px); justify-self: center; }
 }
+
+/* Homepage-only compact layout and single-row category filters. */
+.home-page .section { padding-block: 56px; }
+.home-page .section-heading { margin-bottom: 22px; }
+.home-page .tool-grid { row-gap: 12px; }
+.home-page .tool-filters { max-width: 100%; margin-top: 12px; }
+
+@media (max-width: 760px) {
+  .home-page .section { padding-block: 44px; }
+  .home-page .section-heading { margin-bottom: 18px; }
+  .home-page .tool-filters {
+    flex-wrap: nowrap;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home-page .tool-filter {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding-inline: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .home-page .tool-filter { padding-inline: 7px; font-size: 11px; }
+}
