@@ -1178,3 +1178,24 @@ h1, h2, h3, h4 { color: var(--navy-900); }
 .footer h3 { color: var(--gold-300); }
 @media (max-width: 1100px) and (min-width: 761px) { .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .hero h1 { font-size: clamp(30px, 8vw, 38px); } .hero-actions { align-items: stretch; flex-direction: column; max-width: 320px; margin-inline: auto; } .hero-actions .button { width: 100%; } }
+
+/* Homepage mobile spacing and single-line hero refinement. */
+@media (max-width: 760px) {
+  .home-page .hero { padding-block: 34px 38px; }
+  .home-page .hero h1 {
+    max-width: none;
+    font-size: clamp(18px, 5.5vw, 23px);
+    letter-spacing: -.045em;
+    white-space: nowrap;
+  }
+  .home-page .section { padding-block: 32px; }
+  .home-page .section-heading { gap: 6px; margin-bottom: 12px; }
+  .home-page .tool-grid { row-gap: 8px; }
+  .home-page .tool-filters { gap: 2px; }
+  .home-page .tool-filter { padding-inline: 5px; font-size: 10.5px; }
+}
+
+@media (max-width: 360px) {
+  .home-page .hero h1 { font-size: 18px; }
+  .home-page .tool-filter { padding-inline: 4px; font-size: 10px; }
+}
