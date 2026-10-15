@@ -20,7 +20,7 @@
     if (!document.querySelector('.hero-actions')) {
       const actions = document.createElement('div');
       actions.className = 'hero-actions';
-      actions.innerHTML = '<a class="button button-primary" href="tools.html">Start Converting</a><a class="button button-secondary" href="#popular-title">Explore All Tools</a>';
+      actions.innerHTML = '<a class="button button-primary" href="https://www.umix-convert.online/tools.html">Start Converting</a>';
       heroCopy?.after(actions);
     }
   }
