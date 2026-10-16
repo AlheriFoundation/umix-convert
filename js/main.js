@@ -152,3 +152,15 @@ const insertAdsterraBanner = () => {
 };
 
 document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
+
+const insertAdsterraSocialBar = () => {
+  const socialBarSrc = 'https://bauval.org/14/611a264853a89649598163cf9d6d1fdf';
+  if (!document.body || document.querySelector(`script[src="${socialBarSrc}"]`)) return;
+  const script = document.createElement('script');
+  script.dataset.cfasync = 'false';
+  script.src = socialBarSrc;
+  document.body.append(script);
+};
+
+if (document.body) insertAdsterraSocialBar();
+else document.addEventListener('DOMContentLoaded', insertAdsterraSocialBar, { once: true });
