@@ -113,7 +113,10 @@
         const canvas = document.createElement('canvas');
         canvas.width = Math.ceil(viewport.width);
         canvas.height = Math.ceil(viewport.height);
-        const context = canvas.getContext('2d', { alpha: false });
+        const context = canvas.getContext('2d', { alpha: true });
+        if (!context) throw new Error('Canvas rendering is unavailable.');
+        context.fillStyle = '#ffffff';
+        context.fillRect(0, 0, canvas.width, canvas.height);
         await page.render({ canvasContext: context, viewport }).promise;
         const blob = await new Promise((resolve, reject) => canvas.toBlob(result => result ? resolve(result) : reject(new Error('Image creation failed')), 'image/jpeg', JPEG_QUALITY));
         const url = URL.createObjectURL(blob);
