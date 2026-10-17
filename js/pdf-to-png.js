@@ -5,6 +5,69 @@
   const MAX_PAGES = 50;
   const SCALE = 1.8;
   const state = { file: null, pdf: null, results: [], busy: false };
+  const diagnosticsEnabled = new URLSearchParams(window.location.search).get('pdfdiag') === '1';
+  let diagnosticPanel;
+
+  function diagnosticError(error) {
+    return { name: error?.name || 'Error', message: String(error?.message || 'Unknown error').replace(/[\r\n]+/g, ' ').slice(0, 180) };
+  }
+
+  function diagnosticLog(event, details = {}) {
+    if (!diagnosticsEnabled) return;
+    if (!diagnosticPanel) {
+      diagnosticPanel = document.createElement('pre');
+      diagnosticPanel.setAttribute('aria-label', 'PDF conversion diagnostics');
+      diagnosticPanel.style.cssText = 'position:fixed;z-index:9999;left:8px;right:8px;bottom:8px;max-height:35vh;overflow:auto;margin:0;padding:8px;background:#10243a;color:#fff;font:12px/1.4 monospace;white-space:pre-wrap;border-radius:6px;opacity:.94;';
+      document.body.append(diagnosticPanel);
+    }
+    const line = JSON.stringify({ event, ...details });
+    diagnosticPanel.textContent += `${diagnosticPanel.textContent ? '\n' : ''}${line}`;
+    console.info('[pdfdiag]', event, details);
+  }
+
+  function sampleCanvas(context, width, height) {
+    const step = 16;
+    try {
+      const pixels = context.getImageData(0, 0, width, height).data;
+      let sampled = 0;
+      let nonEmpty = 0;
+      for (let y = 0; y < height; y += step) {
+        for (let x = 0; x < width; x += step) {
+          const index = (y * width + x) * 4;
+          sampled += 1;
+          if (pixels[index + 3] > 0 && (pixels[index] < 250 || pixels[index + 1] < 250 || pixels[index + 2] < 250)) nonEmpty += 1;
+        }
+      }
+      return { sampledPixels: sampled, nonEmptyPixels: nonEmpty, imageDataError: null };
+    } catch (error) {
+      return { sampledPixels: 0, nonEmptyPixels: 0, imageDataError: diagnosticError(error) };
+    }
+  }
+
+  function inspectExport(blob) {
+    return new Promise(resolve => {
+      if (typeof Image !== 'function') { resolve({ decoded: false, exportEmpty: null, decodeError: { name: 'Unsupported', message: 'Image API unavailable' } }); return; }
+      const image = new Image();
+      const url = URL.createObjectURL(blob);
+      const finish = details => { URL.revokeObjectURL(url); resolve(details); };
+      image.onload = () => {
+        try {
+          const probe = document.createElement('canvas');
+          probe.width = 32;
+          probe.height = 32;
+          const context = probe.getContext('2d', { alpha: true });
+          if (!context) throw new Error('Export probe canvas unavailable.');
+          context.drawImage(image, 0, 0, probe.width, probe.height);
+          const sample = sampleCanvas(context, probe.width, probe.height);
+          finish({ decoded: true, width: image.naturalWidth, height: image.naturalHeight, exportEmpty: sample.nonEmptyPixels === 0, exportSample: sample });
+        } catch (error) {
+          finish({ decoded: false, exportEmpty: null, decodeError: diagnosticError(error) });
+        }
+      };
+      image.onerror = () => finish({ decoded: false, exportEmpty: null, decodeError: { name: 'ImageDecodeError', message: 'Export image could not be decoded' } });
+      image.src = url;
+    });
+  }
 
   const $ = selector => document.querySelector(selector);
   const uploadZone = $('[data-upload-zone]');
@@ -106,9 +169,27 @@
         canvas.width = Math.ceil(viewport.width);
         canvas.height = Math.ceil(viewport.height);
         const context = canvas.getContext('2d', { alpha: true });
-        if (!context) throw new Error('Canvas rendering is unavailable.');
-        await page.render({ canvasContext: context, viewport }).promise;
-        const blob = await new Promise((resolve, reject) => canvas.toBlob(result => result ? resolve(result) : reject(new Error('Image creation failed')), 'image/png'));
+        if (!context) {
+          diagnosticLog('canvas-context-error', { page: pageNumber, width: canvas.width, height: canvas.height, error: { name: 'CanvasContextError', message: '2D canvas context unavailable' } });
+          throw new Error('Canvas rendering is unavailable.');
+        }
+        const contextAttributes = typeof context.getContextAttributes === 'function' ? context.getContextAttributes() : null;
+        diagnosticLog('canvas-created', { page: pageNumber, width: canvas.width, height: canvas.height, toBlob: typeof canvas.toBlob === 'function', alpha: contextAttributes ? contextAttributes.alpha : null });
+        try {
+          await page.render({ canvasContext: context, viewport }).promise;
+          diagnosticLog('render-complete', { page: pageNumber, ...sampleCanvas(context, canvas.width, canvas.height) });
+        } catch (error) {
+          diagnosticLog('render-error', { page: pageNumber, error: diagnosticError(error) });
+          throw error;
+        }
+        let blob;
+        try {
+          blob = await new Promise((resolve, reject) => canvas.toBlob(result => result ? resolve(result) : reject(new Error('Image creation failed')), 'image/png'));
+          diagnosticLog('export-complete', { page: pageNumber, blobType: blob.type, blobBytes: blob.size, blobEmpty: blob.size === 0, ...(await inspectExport(blob)) });
+        } catch (error) {
+          diagnosticLog('export-error', { page: pageNumber, error: diagnosticError(error) });
+          throw error;
+        }
         const url = URL.createObjectURL(blob);
         state.results.push({ blob, url, name: `${baseName(state.file.name)}-page-${pageNumber}.png`, pageNumber });
         canvas.width = 1;
