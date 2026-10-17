@@ -152,3 +152,70 @@ const insertAdsterraBanner = () => {
 };
 
 document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
+
+let deferredInstallPrompt = null;
+
+const isStandaloneApp = () => window.matchMedia('(display-mode: standalone)').matches
+  || window.navigator.standalone === true;
+
+const isIosDevice = () => /iphone|ipad|ipod/i.test(window.navigator.userAgent)
+  && !window.MSStream;
+
+const renderInstallBanner = () => {
+  if (document.querySelector('[data-pwa-install]') || isStandaloneApp()) return;
+  const main = document.querySelector('main');
+  if (!main) return;
+
+  const banner = document.createElement('aside');
+  banner.className = 'pwa-install-banner';
+  banner.dataset.pwaInstall = '';
+  banner.setAttribute('aria-labelledby', 'pwa-install-title');
+  const copy = document.createElement('div');
+  copy.innerHTML = '<p class="eyebrow">Install the app</p><h2 id="pwa-install-title">Install UMiX Convert</h2><p>Keep your file tools one tap away on your phone or computer.</p>';
+  banner.append(copy);
+
+  if (deferredInstallPrompt) {
+    const installButton = document.createElement('button');
+    installButton.className = 'button button-primary';
+    installButton.type = 'button';
+    installButton.textContent = 'Install';
+    installButton.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      const promptEvent = deferredInstallPrompt;
+      deferredInstallPrompt = null;
+      promptEvent.prompt();
+      const choice = await promptEvent.userChoice;
+      if (choice.outcome === 'accepted') banner.remove();
+    });
+    banner.append(installButton);
+  } else if (isIosDevice()) {
+    const help = document.createElement('p');
+    help.className = 'pwa-install-help';
+    help.textContent = 'In Safari, tap Share, then Add to Home Screen.';
+    banner.append(help);
+  } else {
+    banner.remove();
+    return;
+  }
+
+  main.before(banner);
+};
+
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  renderInstallBanner();
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  document.querySelector('[data-pwa-install]')?.remove();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const base = /\/tools\//.test(window.location.pathname) ? '../' : '';
+  if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+    navigator.serviceWorker.register(base + 'sw.js', { scope: base }).catch(() => {});
+  }
+  renderInstallBanner();
+});
