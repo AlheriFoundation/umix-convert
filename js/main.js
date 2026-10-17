@@ -163,8 +163,8 @@ const isIosDevice = () => /iphone|ipad|ipod/i.test(window.navigator.userAgent)
 
 const renderInstallBanner = () => {
   if (document.querySelector('[data-pwa-install]') || isStandaloneApp()) return;
-  const main = document.querySelector('main');
-  if (!main) return;
+  const navActions = document.querySelector('.nav-actions');
+  if (!navActions) return;
 
   const banner = document.createElement('aside');
   banner.className = 'pwa-install-banner';
@@ -207,7 +207,7 @@ const renderInstallBanner = () => {
     return;
   }
 
-  main.before(banner);
+  navActions.append(banner);
 };
 
 window.addEventListener('beforeinstallprompt', event => {

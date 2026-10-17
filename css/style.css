@@ -1205,9 +1205,17 @@ h1, h2, h3, h4 { color: var(--navy-900); }
 .adsterra-frame > iframe { flex: 0 0 468px; width: 468px; height: 60px; border: 0; }
 @media (max-width: 500px) { .adsterra-frame { justify-content: flex-start; } }
 
-.pwa-install-banner { width: min(520px, calc(100% - 32px)); margin: 8px auto 0; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); }
-.pwa-install-banner h2 { margin: 0; font-size: 15px; }
+.pwa-install-banner { width: auto; margin: 0; padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--wash); }
+.pwa-install-banner h2 { margin: 0; font-size: 13px; white-space: nowrap; }
 .pwa-install-banner p { margin: 0; color: var(--muted); }
 .pwa-install-banner .button { flex: 0 0 auto; }
 .pwa-install-help { flex-basis: 100%; font-size: 12px; }
-@media (max-width: 600px) { .pwa-install-banner { width: min(100% - 24px, 520px); flex-wrap: wrap; } .pwa-install-banner .button { min-height: 34px; padding-inline: 10px; } }
+.hero-actions .button-primary { min-height: 52px; padding-inline: 24px; font-size: 16px; }
+@media (max-width: 760px) {
+  .nav-actions { min-width: 0; }
+  .pwa-install-banner { max-width: 86px; flex-direction: column; gap: 2px; padding: 3px 4px; }
+  .pwa-install-banner h2 { font-size: 10px; line-height: 1.1; }
+  .pwa-install-banner .button { min-height: 28px; padding-inline: 5px; font-size: 11px; }
+  .pwa-install-help { width: 82px; font-size: 10px; line-height: 1.2; white-space: normal; }
+  .hero-actions .button-primary { min-height: 48px; padding-inline: 20px; font-size: 15px; }
+}
