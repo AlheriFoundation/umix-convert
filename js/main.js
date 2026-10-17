@@ -171,29 +171,38 @@ const renderInstallBanner = () => {
   banner.dataset.pwaInstall = '';
   banner.setAttribute('aria-labelledby', 'pwa-install-title');
   const copy = document.createElement('div');
-  copy.innerHTML = '<p class="eyebrow">Install the app</p><h2 id="pwa-install-title">Install UMiX Convert</h2><p>Keep your file tools one tap away on your phone or computer.</p>';
+  copy.innerHTML = '<h2 id="pwa-install-title">Install App</h2>';
   banner.append(copy);
 
-  if (deferredInstallPrompt) {
-    const installButton = document.createElement('button');
-    installButton.className = 'button button-primary';
-    installButton.type = 'button';
-    installButton.textContent = 'Install';
-    installButton.addEventListener('click', async () => {
-      if (!deferredInstallPrompt) return;
+  const installButton = document.createElement('button');
+  installButton.className = 'button button-primary button-small';
+  installButton.type = 'button';
+  installButton.textContent = 'Install App';
+  installButton.addEventListener('click', async () => {
+    if (deferredInstallPrompt) {
       const promptEvent = deferredInstallPrompt;
       deferredInstallPrompt = null;
       promptEvent.prompt();
       const choice = await promptEvent.userChoice;
       if (choice.outcome === 'accepted') banner.remove();
-    });
-    banner.append(installButton);
-  } else if (isIosDevice()) {
-    const help = document.createElement('p');
-    help.className = 'pwa-install-help';
-    help.textContent = 'In Safari, tap Share, then Add to Home Screen.';
-    banner.append(help);
-  } else {
+      return;
+    }
+    if (isIosDevice()) {
+      let help = banner.querySelector('.pwa-install-help');
+      if (!help) {
+        help = document.createElement('p');
+        help.className = 'pwa-install-help';
+        help.textContent = 'Tap Share → Add to Home Screen';
+        help.hidden = true;
+        banner.append(help);
+      }
+      help.hidden = !help.hidden;
+      return;
+    }
+  });
+  banner.append(installButton);
+
+  if (!deferredInstallPrompt && !isIosDevice()) {
     banner.remove();
     return;
   }
