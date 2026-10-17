@@ -166,6 +166,10 @@ const isIosDevice = () => {
 };
 
 const renderInstallBanner = () => {
+  if (isIosDevice()) {
+    document.querySelector('[data-pwa-install]')?.remove();
+    return;
+  }
   if (document.querySelector('[data-pwa-install]') || isStandaloneApp()) return;
   const navActions = document.querySelector('.nav-actions');
   if (!navActions) return;
