@@ -1216,6 +1216,7 @@ h1, h2, h3, h4 { color: var(--navy-900); }
   .pwa-install-banner { max-width: 86px; flex-direction: column; gap: 2px; padding: 3px 4px; }
   .pwa-install-banner h2 { font-size: 10px; line-height: 1.1; }
   .pwa-install-banner .button { min-height: 28px; padding-inline: 5px; font-size: 11px; }
+  .nav-wrap .nav-actions .pwa-install-banner .button { display: inline-flex; }
   .pwa-install-help { width: 82px; font-size: 10px; line-height: 1.2; white-space: normal; }
   .hero-actions .button-primary { min-height: 48px; padding-inline: 20px; font-size: 15px; }
 }

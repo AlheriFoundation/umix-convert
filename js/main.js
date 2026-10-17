@@ -158,8 +158,12 @@ let deferredInstallPrompt = null;
 const isStandaloneApp = () => window.matchMedia('(display-mode: standalone)').matches
   || window.navigator.standalone === true;
 
-const isIosDevice = () => /iphone|ipad|ipod/i.test(window.navigator.userAgent)
-  && !window.MSStream;
+const isIosDevice = () => {
+  const userAgent = window.navigator.userAgent || '';
+  const platform = window.navigator.platform || '';
+  return /iphone|ipad|ipod/i.test(userAgent)
+    || (platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+};
 
 const renderInstallBanner = () => {
   if (document.querySelector('[data-pwa-install]') || isStandaloneApp()) return;
