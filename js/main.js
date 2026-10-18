@@ -153,6 +153,22 @@ const insertAdsterraBanner = () => {
 
 document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
 
+const insertSponsorOffer = () => {
+  const converterSection = document.querySelector('.converter-section');
+  if (!converterSection || document.querySelector('[data-sponsor-offer]')) return;
+
+  const sponsor = document.createElement('section');
+  sponsor.className = 'sponsor-offer';
+  sponsor.dataset.sponsorOffer = '';
+  sponsor.setAttribute('aria-labelledby', 'sponsor-offer-title');
+  sponsor.innerHTML = '<div class="container"><div class="sponsor-offer-inner"><div><p class="eyebrow">Optional</p><h2 id="sponsor-offer-title">Support UMiX Convert</h2><p>Open an optional sponsor offer in a new tab. This does not affect your file download.</p></div><a class="button button-secondary" href="https://uplcm.com/4/12058857" target="_blank" rel="noopener noreferrer">Optional Sponsor Offer</a></div></div>';
+
+  const placement = document.querySelector('[data-adsterra-banner]') || converterSection;
+  placement.insertAdjacentElement('afterend', sponsor);
+};
+
+document.addEventListener('DOMContentLoaded', insertSponsorOffer);
+
 let deferredInstallPrompt = null;
 
 const isStandaloneApp = () => window.matchMedia('(display-mode: standalone)').matches
