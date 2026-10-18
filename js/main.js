@@ -17,12 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroHeading && document.body.classList.contains('home-page')) {
     heroHeading.innerHTML = 'Convert Your Files <span class="hero-accent">in Seconds</span>';
     if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more — quickly and easily, all in one place.';
-    if (!document.querySelector('.hero-actions')) {
-      const actions = document.createElement('div');
-      actions.className = 'hero-actions';
-      actions.innerHTML = '<a class="button button-primary" href="https://www.umix-convert.online/tools.html">Start Converting</a>';
-      heroCopy?.after(actions);
-    }
   }
   new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(normaliseNode))).observe(document.documentElement, { childList: true, subtree: true });
   const pageIsTool = /\/tools\//.test(window.location.pathname) || window.location.pathname.endsWith('/tools');
