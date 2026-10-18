@@ -11,7 +11,7 @@
   const MAX_INPUT_BYTES = 5 * 1024 * 1024;
   let outputUrl = null;
   let fileToken = 0;
-  const sample = 'Hausa: Sannu duniya! ðŸŒ\nUMiX Convert â€” Convert. Compress. Simplify.';
+  const sample = 'Hausa: Sannu duniya! 🌍\nUMiX Convert — Convert. Compress. Simplify.';
   function setError(message) { errorBox.textContent = message; errorBox.hidden = !message; }
   function clearUrl() { if (outputUrl) URL.revokeObjectURL(outputUrl); outputUrl = null; }
   function updateCounts() { inputCount.textContent = `${input.value.length.toLocaleString()} characters`; outputCount.textContent = `${output.value.length.toLocaleString()} characters`; }

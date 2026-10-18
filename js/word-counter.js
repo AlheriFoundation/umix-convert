@@ -15,13 +15,13 @@
       const segments = [...new Intl.Segmenter(undefined, { granularity: 'word' }).segment(text)];
       return segments.filter(part => part.isWordLike).length;
     }
-    return (text.match(/[\p{L}\p{M}\p{N}]+(?:[â€™'_-][\p{L}\p{M}\p{N}]+)*/gu) || []).length;
+    return (text.match(/[\p{L}\p{M}\p{N}]+(?:[’'_-][\p{L}\p{M}\p{N}]+)*/gu) || []).length;
   }
 
   function getSentences(text) {
     const trimmed = text.trim();
     if (!trimmed) return 0;
-    const endings = trimmed.match(/[.!?â€¦ã€‚ï¼ï¼Ÿ]+(?=\s|$)/gu);
+    const endings = trimmed.match(/[.!?…。！？]+(?=\s|$)/gu);
     return endings ? endings.length : 1;
   }
 

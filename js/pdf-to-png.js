@@ -121,7 +121,7 @@
     state.busy = true;
     summary.hidden = false;
     $('[data-file-name]').textContent = file.name;
-    $('[data-file-meta]').textContent = `${formatBytes(file.size)} Â· Checking PDF...`;
+    $('[data-file-meta]').textContent = `${formatBytes(file.size)} · Checking PDF...`;
     actions.hidden = true;
     resultsPanel.hidden = true;
     uploadZone.hidden = true;
@@ -135,7 +135,7 @@
         showError(`This PDF has ${pdf.numPages} pages. Please choose a PDF with ${MAX_PAGES} pages or fewer.`);
         return;
       }
-      $('[data-file-meta]').textContent = `${formatBytes(file.size)} Â· ${pdf.numPages} ${pdf.numPages === 1 ? 'page' : 'pages'}`;
+      $('[data-file-meta]').textContent = `${formatBytes(file.size)} · ${pdf.numPages} ${pdf.numPages === 1 ? 'page' : 'pages'}`;
       actions.hidden = false;
       state.busy = false;
     } catch (error) {
@@ -227,7 +227,7 @@
       download.className = 'text-link';
       download.href = result.url;
       download.download = result.name;
-      download.textContent = 'Download PNG â†’';
+      download.textContent = 'Download PNG →';
       download.setAttribute('aria-label', `Download PNG for page ${result.pageNumber}`);
       heading.append(title, download);
       const image = document.createElement('img');

@@ -110,7 +110,7 @@
       const name = document.createElement('strong');
       name.textContent = item.file.name;
       const meta = document.createElement('span');
-      meta.textContent = `${formatBytes(item.file.size)} Â· ${item.width} Ã— ${item.height}px`;
+      meta.textContent = `${formatBytes(item.file.size)} · ${item.width} × ${item.height}px`;
       details.append(name, meta);
       const controls = document.createElement('div');
       controls.className = 'image-file-controls';
@@ -199,7 +199,7 @@
       revokePdfUrl();
       state.pdfBlob = blob;
       state.pdfUrl = URL.createObjectURL(blob);
-      $('[data-result-meta]').textContent = `${total} ${total === 1 ? 'image' : 'images'} Â· ${formatBytes(blob.size)}`;
+      $('[data-result-meta]').textContent = `${total} ${total === 1 ? 'image' : 'images'} · ${formatBytes(blob.size)}`;
       resultPanel.hidden = false;
     } catch (error) {
       showError('The PDF could not be generated. Please try fewer or smaller JPG images.');

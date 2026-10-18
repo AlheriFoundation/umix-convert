@@ -8,7 +8,7 @@
   const outputCount = document.querySelector('[data-url-output-count]');
   if (!input || !output) return;
   let outputUrl = null;
-  const sample = 'https://example.com/search?q=Hausa characters & emoji ðŸŒ#results';
+  const sample = 'https://example.com/search?q=Hausa characters & emoji 🌍#results';
   function setError(message) { errorBox.textContent = message; errorBox.hidden = !message; }
   function clearUrl() { if (outputUrl) URL.revokeObjectURL(outputUrl); outputUrl = null; }
   function updateCounts() { inputCount.textContent = `${input.value.length.toLocaleString()} characters`; outputCount.textContent = `${output.value.length.toLocaleString()} characters`; }

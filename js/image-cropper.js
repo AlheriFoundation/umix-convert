@@ -40,7 +40,7 @@
 
   function loadImage(file) {
     const version = ++state.version;
-    clearError(); state.busy = true; setStatus('Loading imageâ€¦'); setControlsEnabled(false); resetResult(); revokeSource();
+    clearError(); state.busy = true; setStatus('Loading image…'); setControlsEnabled(false); resetResult(); revokeSource();
     const url = URL.createObjectURL(file); state.loadingUrl = url;
     const image = new Image(); image.decoding = 'async';
     image.onload = () => {
@@ -59,7 +59,7 @@
     const displayedHeight = imageElement.clientHeight || imageElement.getBoundingClientRect().height;
     if (!displayedWidth || !displayedHeight) { requestAnimationFrame(render); return; }
     cropBox.style.left = `${state.crop.x / state.image.naturalWidth * displayedWidth}px`; cropBox.style.top = `${state.crop.y / state.image.naturalHeight * displayedHeight}px`; cropBox.style.width = `${state.crop.w / state.image.naturalWidth * displayedWidth}px`; cropBox.style.height = `${state.crop.h / state.image.naturalHeight * displayedHeight}px`;
-    $('[data-crop-size]').textContent = `${Math.round(state.crop.w)} Ã— ${Math.round(state.crop.h)} px`; $('[data-crop-ratio]').textContent = formatRatio(currentRatio()); $('[data-output-summary]').textContent = $('[data-format]').value === 'image/png' ? 'PNG' : `JPG (${ $('[data-quality]').value }%)`;
+    $('[data-crop-size]').textContent = `${Math.round(state.crop.w)} × ${Math.round(state.crop.h)} px`; $('[data-crop-ratio]').textContent = formatRatio(currentRatio()); $('[data-output-summary]').textContent = $('[data-format]').value === 'image/png' ? 'PNG' : `JPG (${ $('[data-quality]').value }%)`;
   }
 
   function beginInteraction(event) {
@@ -80,10 +80,10 @@
   function endInteraction(event) { if (state.interaction && event.pointerId === state.interaction.pointerId) { state.interaction = null; if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId); } }
 
   async function exportCrop() {
-    if (!state.image || !state.crop || state.busy) return; const version = state.version; const crop = { ...state.crop }; const mime = $('[data-format]').value; const quality = Number($('[data-quality]').value) / 100; state.busy = true; setControlsEnabled(false); $('[data-processing]').hidden = false; setStatus('Preparing cropâ€¦'); resetResult();
+    if (!state.image || !state.crop || state.busy) return; const version = state.version; const crop = { ...state.crop }; const mime = $('[data-format]').value; const quality = Number($('[data-quality]').value) / 100; state.busy = true; setControlsEnabled(false); $('[data-processing]').hidden = false; setStatus('Preparing crop…'); resetResult();
     try {
       const canvas = document.createElement('canvas'); canvas.width = Math.max(1, Math.round(crop.w)); canvas.height = Math.max(1, Math.round(crop.h)); const context = canvas.getContext('2d'); if (!context) throw new Error('canvas'); if (mime === 'image/jpeg') { context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height); } context.drawImage(state.image, Math.round(crop.x), Math.round(crop.y), canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, mime, mime === 'image/jpeg' ? quality : undefined)); if (version !== state.version) return; if (!blob) throw new Error('export'); state.resultUrl = URL.createObjectURL(blob); const extensionName = mime === 'image/png' ? 'png' : 'jpg'; const name = `${safeStem(state.file.name)}-cropped.${extensionName}`; const download = $('[data-download]'); download.href = state.resultUrl; download.download = name; download.textContent = `Download ${name}`; $('[data-result-detail]').textContent = `${Math.round(crop.w)} Ã— ${Math.round(crop.h)} px Â· ${extensionName.toUpperCase()} Â· ${Math.round(blob.size / 1024)} KB`; $('[data-result]').hidden = false; setStatus('Crop complete');
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, mime, mime === 'image/jpeg' ? quality : undefined)); if (version !== state.version) return; if (!blob) throw new Error('export'); state.resultUrl = URL.createObjectURL(blob); const extensionName = mime === 'image/png' ? 'png' : 'jpg'; const name = `${safeStem(state.file.name)}-cropped.${extensionName}`; const download = $('[data-download]'); download.href = state.resultUrl; download.download = name; download.textContent = `Download ${name}`; $('[data-result-detail]').textContent = `${Math.round(crop.w)} × ${Math.round(crop.h)} px · ${extensionName.toUpperCase()} · ${Math.round(blob.size / 1024)} KB`; $('[data-result]').hidden = false; setStatus('Crop complete');
     } catch (error) { if (version === state.version) { showError('We could not export this crop. Please try again or use another browser.'); setStatus('Export failed'); } } finally { if (version === state.version) { state.busy = false; $('[data-processing]').hidden = true; setControlsEnabled(true); } }
   }
 

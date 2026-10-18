@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mojibake = [['â†’', '?'], ['Â·', '·'], ['â€”', '—'], ['â€“', '–'], ['â€¦', '…'], ['â€™', '’'], ['ã€‚', '?'], ['ï¼\x81', '!'], ['ï¼Ÿ', '?'], ['Ã—', '×']];
+  const mojibake = [['\u00e2\u2020\u2019', '\u2192'], ['\u00c2\u00b7', '\u00b7'], ['\u00e2\u20ac\u201d', '\u2014'], ['\u00e2\u20ac\u2013', '\u2013'], ['\u00e2\u20ac\u00a6', '\u2026'], ['\u00e2\u20ac\u2122', '\u2019'], ['\u00e3\u20ac\u201a', '\u3002'], ['\u00ef\u00bc\u0081', '\uff01'], ['\u00ef\u00bc\u0178', '\uff1f'], ['\u00c3\u0097', '\u00d7']];
   const normaliseText = value => mojibake.reduce((result, [bad, good]) => result.split(bad).join(good), value);
   const normaliseNode = node => {
     if (node.nodeType === Node.TEXT_NODE) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroCopy = document.querySelector('.hero .hero-copy');
   if (heroHeading && document.body.classList.contains('home-page')) {
     heroHeading.innerHTML = 'Convert Your Files <span class="hero-accent">in Seconds</span>';
-    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more — quickly and easily, all in one place.';
+    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more â€” quickly and easily, all in one place.';
     if (!document.querySelector('.hero-actions')) {
       const actions = document.createElement('div');
       actions.className = 'hero-actions';
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const copyright = document.createElement('p');
     copyright.className = 'copyright';
-    copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+    copyright.textContent = 'Â© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
     simpleContainer.append(links, copyright);
     return;
   }
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   footer.querySelectorAll('a[href*="privacy"]').forEach(link => { link.textContent = 'Privacy'; });
   const copyright = footer.querySelector('.copyright');
-  if (copyright) copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+  if (copyright) copyright.textContent = 'Â© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
 });
 const insertAdsterraBanner = () => {
   const adHost = document.querySelector('main');

@@ -111,7 +111,7 @@
       const name = document.createElement('strong');
       name.textContent = item.file.name;
       const meta = document.createElement('span');
-      meta.textContent = `${formatBytes(item.file.size)} Â· ${item.width} Ã— ${item.height}px`;
+      meta.textContent = `${formatBytes(item.file.size)} · ${item.width} × ${item.height}px`;
       details.append(name, meta);
       const position = document.createElement('span');
       position.className = 'image-position';
@@ -196,7 +196,7 @@
       const title = document.createElement('h3');
       title.textContent = result.name;
       const meta = document.createElement('p');
-      meta.textContent = `${result.width} Ã— ${result.height}px Â· ${formatBytes(result.blob.size)}`;
+      meta.textContent = `${result.width} × ${result.height}px · ${formatBytes(result.blob.size)}`;
       const download = document.createElement('a');
       download.className = 'button button-secondary';
       download.href = result.url;
