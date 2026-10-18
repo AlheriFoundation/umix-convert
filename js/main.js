@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
       empty.className = 'empty-state';
       empty.dataset.emptyState = '';
       empty.hidden = true;
+      empty.setAttribute('role', 'status');
+      empty.setAttribute('aria-live', 'polite');
       empty.textContent = 'No tools match your search. Try another format or category.';
       cards[cards.length - 1].parentElement?.append(empty);
     }
