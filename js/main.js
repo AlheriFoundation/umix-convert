@@ -152,7 +152,16 @@ const insertAdsterraBanner = () => {
 };
 
 document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
+const insertMonetagInPagePush = () => {
+  if (document.querySelector('script[data-zone="12058882"][src="https://nap5k.com/tag.min.js"]')) return;
+  (function(s){s.dataset.zone='12058882',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+};
 
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', insertMonetagInPagePush);
+} else {
+  insertMonetagInPagePush();
+}
 
 
 let deferredInstallPrompt = null;
