@@ -1205,13 +1205,6 @@ h1, h2, h3, h4 { color: var(--navy-900); }
 .adsterra-frame > iframe { flex: 0 0 468px; width: 468px; height: 60px; border: 0; }
 @media (max-width: 500px) { .adsterra-frame { justify-content: flex-start; } }
 
-.sponsor-offer { padding: 22px 0; background: var(--wash); border-bottom: 1px solid var(--line); }
-.sponsor-offer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.sponsor-offer .eyebrow { margin-bottom: 6px; font-size: 11px; }
-.sponsor-offer h2 { margin-bottom: 5px; font-size: 20px; }
-.sponsor-offer p:not(.eyebrow) { margin: 0; color: var(--muted); font-size: 13px; }
-@media (max-width: 760px) { .sponsor-offer-inner { align-items: flex-start; flex-direction: column; } }
-@media (max-width: 430px) { .sponsor-offer { padding: 20px 0; } .sponsor-offer .button { width: 100%; } }
 
 .pwa-install-banner { width: auto; margin: 0; padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--wash); }
 .pwa-install-banner h2 { margin: 0; font-size: 13px; white-space: nowrap; }

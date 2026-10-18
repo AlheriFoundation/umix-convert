@@ -1,5 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
-  const mojibake = [['â†’', '→'], ['Â·', '·'], ['â€”', '—'], ['â€“', '–'], ['â€¦', '…'], ['â€™', '’'], ['ã€‚', '。'], ['ï¼\x81', '！'], ['ï¼Ÿ', '？'], ['Ã—', '×']];
+document.addEventListener('DOMContentLoaded', () => {
+  const mojibake = [['→', '?'], ['·', '�'], ['—', '�'], ['–', '�'], ['…', '�'], ['’', '�'], ['。', '?'], ['�\x81', '!'], ['？', '?'], ['×', '�']];
   const normaliseText = value => mojibake.reduce((result, [bad, good]) => result.split(bad).join(good), value);
   const normaliseNode = node => {
     if (node.nodeType === Node.TEXT_NODE) {
@@ -16,7 +16,7 @@
   const heroCopy = document.querySelector('.hero .hero-copy');
   if (heroHeading && document.body.classList.contains('home-page')) {
     heroHeading.innerHTML = 'Convert Your Files <span class="hero-accent">in Seconds</span>';
-    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more — quickly and easily, all in one place.';
+    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more � quickly and easily, all in one place.';
     if (!document.querySelector('.hero-actions')) {
       const actions = document.createElement('div');
       actions.className = 'hero-actions';
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const copyright = document.createElement('p');
     copyright.className = 'copyright';
-    copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+    copyright.textContent = '� 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
     simpleContainer.append(links, copyright);
     return;
   }
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   footer.querySelectorAll('a[href*="privacy"]').forEach(link => { link.textContent = 'Privacy'; });
   const copyright = footer.querySelector('.copyright');
-  if (copyright) copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+  if (copyright) copyright.textContent = '� 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
 });
 const insertAdsterraBanner = () => {
   const adHost = document.querySelector('main');
@@ -153,21 +153,7 @@ const insertAdsterraBanner = () => {
 
 document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
 
-const insertSponsorOffer = () => {
-  const converterSection = document.querySelector('.converter-section');
-  if (!converterSection || document.querySelector('[data-sponsor-offer]')) return;
 
-  const sponsor = document.createElement('section');
-  sponsor.className = 'sponsor-offer';
-  sponsor.dataset.sponsorOffer = '';
-  sponsor.setAttribute('aria-labelledby', 'sponsor-offer-title');
-  sponsor.innerHTML = '<div class="container"><div class="sponsor-offer-inner"><div><p class="eyebrow">Optional</p><h2 id="sponsor-offer-title">Support UMiX Convert</h2><p>Open an optional sponsor offer in a new tab. This does not affect your file download.</p></div><a class="button button-secondary" href="https://uplcm.com/4/12058857" target="_blank" rel="noopener noreferrer">Optional Sponsor Offer</a></div></div>';
-
-  const placement = document.querySelector('[data-adsterra-banner]') || converterSection;
-  placement.insertAdjacentElement('afterend', sponsor);
-};
-
-document.addEventListener('DOMContentLoaded', insertSponsorOffer);
 
 let deferredInstallPrompt = null;
 
@@ -216,7 +202,7 @@ const renderInstallBanner = () => {
       if (!help) {
         help = document.createElement('p');
         help.className = 'pwa-install-help';
-        help.textContent = 'Tap Share → Add to Home Screen';
+        help.textContent = 'Tap Share ? Add to Home Screen';
         help.hidden = true;
         banner.append(help);
       }
