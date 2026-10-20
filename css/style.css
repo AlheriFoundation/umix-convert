@@ -1327,8 +1327,15 @@ body { background-image: none; }
 }
 .tool-error { border-color: #F0C5BE; }
 @media (max-width: 600px) {
-  .conversion-selector { padding: 18px 14px; }
-  .conversion-field { padding: 13px; }
+  .home-page .conversion-intro { text-align: center; }
+  .home-page .conversion-intro .hero-copy { margin-inline: auto; }
+  .home-page .conversion-selector { padding: 14px 12px; }
+  .home-page .conversion-selector-heading { margin-bottom: 12px; }
+  .home-page .conversion-fields { gap: 7px; }
+  .home-page .conversion-field { padding: 10px; }
+  .home-page .conversion-field select { min-height: 46px; }
+  .home-page .conversion-status { margin-block: 10px; }
+  .home-page .conversion-submit { min-height: 44px; }
   .conversion-arrow { width: 34px; height: 34px; line-height: 34px; }
 }
 @media (hover: none) {
