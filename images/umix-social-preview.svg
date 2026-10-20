@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">UMiX Convert — Convert. Compress. Simplify.</title>
+  <title id="title">UMiX Converter — Convert. Compress. Simplify.</title>
   <desc id="desc">A premium document conversion workspace for PDFs, images, documents, and text.</desc>
   <rect width="1200" height="630" fill="#F8F7F2"/>
   <circle cx="1090" cy="70" r="170" fill="#EBF1FD" opacity=".8"/>
@@ -7,11 +7,8 @@
   <path d="M0 0h1200v14H0z" fill="#10233F"/>
   <path d="M0 616h1200v14H0z" fill="#D4A84F"/>
 
-  <g transform="translate(92 120)">
-    <rect width="76" height="76" rx="20" fill="#2457D6"/>
-    <path d="M20 23v20c0 9 5.6 14.3 14 14.3 6.6 0 10.7-2.7 13.2-7V57h7.8V23h-7.8v19.2c0 4.8-2.9 8.2-7.6 8.2-4.5 0-6-2.9-6-8.1V23z" fill="#fff"/>
-  </g>
-  <text x="190" y="176" fill="#10233F" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-1.5">UMiX Convert</text>
+  <image href="umix-convert-official-logo-384.png" x="92" y="100" width="76" height="76"/>
+  <text x="190" y="176" fill="#10233F" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-1.5">UMiX Converter</text>
   <rect x="94" y="238" width="90" height="5" rx="2.5" fill="#D4A84F"/>
   <text x="92" y="315" fill="#10233F" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Convert. Compress.</text>
   <text x="92" y="385" fill="#2457D6" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Simplify.</text>

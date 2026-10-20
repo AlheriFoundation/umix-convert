@@ -1,7 +1,7 @@
 {
-  "name": "UMiX Convert",
-  "short_name": "UMiX",
-  "description": "Browser-based tools for converting, compressing, and managing files.",
+  "name": "UMiX Converter",
+  "short_name": "UMiX Converter",
+  "description": "Browser-based file conversion and utility tools from UMiX Converter.",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",

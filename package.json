@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Browser-based file conversion tools",
+  "dependencies": {
+    "docx-preview": "0.4.1"
+  }
+}

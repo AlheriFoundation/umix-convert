@@ -1,6 +1,6 @@
-# UMiX Convert
+# UMiX Converter
 
-UMiX Convert is a static HTML5, CSS3 and vanilla JavaScript application. Its browser-side tools use the checked-in files in `vendor/`; no build step or package installation is required.
+UMiX Converter is a static HTML5, CSS3 and vanilla JavaScript application. Its browser-side tools use the checked-in files in `vendor/`; no build step or package installation is required.
 
 ## Run locally
 

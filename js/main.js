@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const iconFor = href => { const name = href.split('/').pop().replace('.html', ''); if (/merge/.test(name)) return 'merge'; if (/split/.test(name)) return 'split'; if (/compress/.test(name)) return 'compress'; if (/crop/.test(name)) return 'crop'; if (/counter/.test(name)) return 'counter'; if (/size/.test(name)) return 'size'; if (/json|base64/.test(name)) return 'code'; if (/url-/.test(name)) return 'link'; if (/excel|csv/.test(name)) return 'spreadsheet'; if (/word|powerpoint|txt/.test(name)) return 'document'; if (/image|jpg|png/.test(name)) return 'image'; return 'pdf'; };
   const categoryFor = href => { const name = href.split('/').pop().replace('.html', ''); if (/pdf|merge|split|compress-pdf/.test(name)) return 'pdf'; if (/image|jpg|png|crop|compress-image/.test(name)) return 'image'; if (/word|excel|csv|powerpoint|txt-to-pdf/.test(name)) return 'document'; return 'utility'; };
   const toolCardCopy = {
-    'pdf-to-word.html': { badge: 'PDF', description: 'Extract selectable PDF text into an editable Word document.', hero: 'Extract selectable PDF text into an editable Word document. Complex layouts, tables, and images may not be preserved exactly.' },
+    'pdf-to-word.html': { badge: 'PDF', description: 'Extract selectable PDF text into an editable Word document.', hero: 'Extract PDF text into an editable Word document. Complex layouts, tables, and logos may not be preserved exactly.' },
     'pdf-to-excel.html': { badge: 'PDF', description: 'Extract PDF text and approximate table data into an Excel workbook.', hero: 'Extract PDF text and approximate table data into an editable Excel workbook. Complex tables may need manual correction.' },
     'image-to-pdf.html': { badge: 'IMG', description: 'Combine JPG, PNG, and WebP images into one PDF.' },
-    'word-to-pdf.html': { badge: 'DOCX', description: 'Convert supported DOCX documents into PDF.' },
+    'word-to-pdf.html': { badge: 'DOCX', description: 'Convert DOCX documents to PDF while preserving page layouts, formatting, and images.' },
     'excel-to-pdf.html': { badge: 'XLS', description: 'Convert supported Excel workbooks into PDF.' },
     'excel-to-csv.html': { badge: 'XLS', description: 'Export one Excel worksheet as UTF-8 CSV.' },
     'csv-to-excel.html': { badge: 'CSV', description: 'Convert CSV data into an editable Excel workbook.' },
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const copyright = document.createElement('p');
     copyright.className = 'copyright';
-    copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+    copyright.textContent = '© 2026 UMiX Converter. All rights reserved. by ABKAB Smart Solution';
     simpleContainer.append(links, copyright);
     return;
   }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   footer.querySelectorAll('a[href*="privacy"]').forEach(link => { link.textContent = 'Privacy'; });
   const copyright = footer.querySelector('.copyright');
-  if (copyright) copyright.textContent = '© 2026 UMiX Convert. All rights reserved. by ABKAB Smart Solution';
+  if (copyright) copyright.textContent = '© 2026 UMiX Converter. All rights reserved. by ABKAB Smart Solution';
 });
 const insertAdsterraBanner = () => {
   const adHost = document.querySelector('main');

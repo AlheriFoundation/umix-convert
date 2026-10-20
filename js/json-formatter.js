@@ -11,7 +11,7 @@
   if (!input || !output || !fileInput) return;
   let outputUrl = null;
   let loadToken = 0;
-  const sample = { name: 'UMiX Convert', tagline: 'Convert. Compress. Simplify.', features: ['Format JSON', 'Validate JSON', 'Minify JSON'], local: true };
+  const sample = { name: 'UMiX Converter', tagline: 'Convert. Compress. Simplify.', features: ['Format JSON', 'Validate JSON', 'Minify JSON'], local: true };
   function setError(message) { errorBox.textContent = message; errorBox.hidden = !message; }
   function updateCounts() { inputCount.textContent = `${input.value.length.toLocaleString()} characters`; outputCount.textContent = `${output.value.length.toLocaleString()} characters`; }
   function clearUrl() { if (outputUrl) URL.revokeObjectURL(outputUrl); outputUrl = null; }

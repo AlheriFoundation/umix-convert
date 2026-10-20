@@ -3,8 +3,10 @@ const APP_SHELL = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
+  '/js/conversion-selector.js',
   '/manifest.webmanifest',
-  '/images/logo.svg'
+  '/images/logo.svg',
+  '/images/icon-192.png'
 ];
 
 self.addEventListener('install', event => {

@@ -13,9 +13,12 @@ qa-stage28-evidence/
 qa-*.cjs
 
 # Temporary and generated files
+node_modules/
 *.tmp
 *.temp
 *.log
 .DS_Store
 Thumbs.db
 
+
+.vercel
