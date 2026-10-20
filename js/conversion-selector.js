@@ -8,6 +8,15 @@
   const to = selector.querySelector('[name="to"]');
   const status = selector.querySelector('[data-conversion-status]');
   const submit = selector.querySelector('[data-conversion-submit]');
+  const targetLabels = {
+    pdf: 'PDF',
+    jpg: 'JPG',
+    png: 'PNG',
+    docx: 'Word (.docx)',
+    xlsx: 'Excel (.xlsx)',
+    csv: 'CSV',
+    txt: 'TXT'
+  };
   const conversions = {
     pdf: {
       docx: { page: 'tools/pdf-to-word.html', output: 'Word' },
@@ -52,6 +61,18 @@
     return conversions[from.value]?.[to.value] || null;
   }
 
+  function updateTargetOptions() {
+    const availableTargets = Object.keys(conversions[from.value] || {});
+    to.replaceChildren(new Option(
+      from.value ? 'Choose an output format' : 'Choose a file format first',
+      '',
+      true,
+      true
+    ));
+    to.disabled = !from.value;
+    availableTargets.forEach(value => to.add(new Option(targetLabels[value], value)));
+  }
+
   function updateAvailability() {
     const source = from.options[from.selectedIndex]?.textContent || '';
     const target = to.options[to.selectedIndex]?.textContent || '';
@@ -60,8 +81,10 @@
     submit.disabled = !conversion;
     status.removeAttribute('data-state');
 
-    if (!from.value || !to.value) {
-      status.textContent = 'Select both formats to check whether this conversion is available.';
+    if (!from.value) {
+      status.textContent = 'Choose a source format to see the available conversions.';
+    } else if (!to.value) {
+      status.textContent = 'Choose an output format. Only supported formats are listed.';
     } else if (conversion) {
       const extra = conversion.note ? ` ${conversion.note}` : ' You can choose your file on the next page.';
       status.textContent = `${source} to ${target} is supported.${extra}`;
@@ -72,12 +95,16 @@
     }
   }
 
-  from.addEventListener('change', updateAvailability);
+  from.addEventListener('change', () => {
+    updateTargetOptions();
+    updateAvailability();
+  });
   to.addEventListener('change', updateAvailability);
   selector.addEventListener('submit', event => {
     event.preventDefault();
     const conversion = selectedConversion();
     if (conversion) window.location.assign(conversion.page);
   });
+  updateTargetOptions();
   updateAvailability();
 })();

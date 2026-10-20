@@ -1207,19 +1207,20 @@ h1, h2, h3, h4 { color: var(--navy-900); }
 .conversion-intro .eyebrow { margin-bottom: 10px; }
 .conversion-intro h1 { max-width: none; margin-bottom: 10px; font-size: clamp(36px, 5vw, 54px); }
 .conversion-intro .hero-copy { max-width: 620px; margin: 0 auto; font-size: 16px; }
-.conversion-selector { width: min(900px, 100%); padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
-.conversion-selector-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.conversion-selector { width: min(780px, 100%); padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+.conversion-selector-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .conversion-selector-heading .eyebrow { margin-bottom: 4px; }
 .conversion-selector-heading h2 { margin: 0; font-size: clamp(22px, 3vw, 28px); line-height: 1.15; letter-spacing: -.04em; }
 .conversion-selector-note { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--wash); font-size: 12px; font-weight: 700; white-space: nowrap; }
 .conversion-fields { display: grid; grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); align-items: end; gap: 18px; }
 .conversion-field { min-width: 0; }
 .conversion-field label { display: block; margin-bottom: 8px; color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.conversion-field select { width: 100%; min-height: 58px; padding: 0 42px 0 16px; border: 1px solid #cbd5e1; border-radius: 12px; color: var(--ink); background: #fff; font: inherit; font-weight: 650; cursor: pointer; }
+.conversion-field select { width: 100%; min-height: 48px; padding: 0 36px 0 12px; border: 1px solid #cbd5e1; border-radius: 12px; color: var(--ink); background: #fff; font: inherit; font-weight: 650; cursor: pointer; }
+.conversion-field select:disabled { color: var(--muted); background: var(--wash); cursor: not-allowed; }
 .conversion-field select:hover { border-color: var(--accent); }
 .conversion-field select:focus-visible { outline: 3px solid rgba(255, 90, 69, .3); outline-offset: 2px; border-color: var(--accent); }
 .conversion-arrow { align-self: center; margin-top: 22px; color: var(--accent); font-size: 28px; font-weight: 700; text-align: center; }
-.conversion-status { min-height: 25px; margin: 17px 0 14px; color: var(--muted); font-size: 14px; }
+.conversion-status { min-height: 22px; margin: 12px 0 10px; color: var(--muted); font-size: 14px; }
 .conversion-status[data-state="supported"] { color: #18794e; font-weight: 650; }
 .conversion-status[data-state="unsupported"] { color: #9a3412; }
 .conversion-submit { min-height: 48px; padding-inline: 22px; }
@@ -1231,13 +1232,13 @@ h1, h2, h3, h4 { color: var(--navy-900); }
   .conversion-intro { text-align: left; }
   .home-page .conversion-intro h1 { max-width: none; font-size: clamp(26px, 8vw, 38px); white-space: normal; }
   .conversion-intro .hero-copy { margin: 0; font-size: 15px; }
-  .conversion-selector { padding: 20px 16px; border-radius: 14px; }
-  .conversion-selector-heading { align-items: flex-start; margin-bottom: 18px; }
+  .conversion-selector { padding: 14px 12px; border-radius: 14px; }
+  .conversion-selector-heading { align-items: flex-start; margin-bottom: 10px; }
   .conversion-selector-note { padding: 5px 8px; font-size: 11px; }
   .conversion-fields { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .conversion-field select { min-height: 54px; }
+  .conversion-field select { min-height: 44px; }
   .conversion-arrow { margin: -4px 0; transform: rotate(90deg); }
-  .conversion-status { margin-block: 13px; font-size: 13px; }
+  .conversion-status { margin-block: 9px; font-size: 13px; }
   .conversion-submit { width: 100%; }
 }
 @media (max-width: 360px) {
@@ -1295,13 +1296,13 @@ body { background-image: none; }
 }
 .conversion-selector { border-radius: var(--radius-lg); }
 .conversion-field {
-  padding: 16px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #FBFCFE;
 }
 .conversion-field select {
-  min-height: 52px;
+  min-height: 46px;
   border-color: #C9D4DF;
   border-radius: 10px;
 }
@@ -1329,12 +1330,12 @@ body { background-image: none; }
 @media (max-width: 600px) {
   .home-page .conversion-intro { text-align: center; }
   .home-page .conversion-intro .hero-copy { margin-inline: auto; }
-  .home-page .conversion-selector { padding: 14px 12px; }
-  .home-page .conversion-selector-heading { margin-bottom: 12px; }
-  .home-page .conversion-fields { gap: 7px; }
-  .home-page .conversion-field { padding: 10px; }
-  .home-page .conversion-field select { min-height: 46px; }
-  .home-page .conversion-status { margin-block: 10px; }
+  .home-page .conversion-selector { padding: 12px 10px; }
+  .home-page .conversion-selector-heading { margin-bottom: 10px; }
+  .home-page .conversion-fields { gap: 6px; }
+  .home-page .conversion-field { padding: 8px; }
+  .home-page .conversion-field select { min-height: 44px; }
+  .home-page .conversion-status { margin-block: 8px; }
   .home-page .conversion-submit { min-height: 44px; }
   .conversion-arrow { width: 34px; height: 34px; line-height: 34px; }
 }
