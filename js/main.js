@@ -21,6 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
   new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(normaliseNode))).observe(document.documentElement, { childList: true, subtree: true });
   const pageIsTool = /\/tools\//.test(window.location.pathname) || window.location.pathname.endsWith('/tools');
   const base = pageIsTool ? '../' : '';
+  document.querySelectorAll('[data-upload-zone]').forEach(zone => {
+    const input = zone.querySelector('[data-file-input]');
+    const browse = zone.querySelector('[data-browse]');
+    const zoneLabel = zone.getAttribute('aria-label') || 'Choose files or drag and drop them here';
+    if (input && !input.labels.length && !input.hasAttribute('aria-label')) input.setAttribute('aria-label', zoneLabel);
+    if (browse) {
+      browse.textContent = 'Select Files';
+      if (!browse.hasAttribute('aria-label')) browse.setAttribute('aria-label', `Select files. ${zoneLabel}`);
+    }
+    if (input && !zone.hasAttribute('tabindex')) {
+      zone.tabIndex = 0;
+      zone.addEventListener('click', event => {
+        if (event.target === input || event.target.closest('button, a, label') || zone.hidden || input.disabled) return;
+        input.click();
+      });
+      zone.addEventListener('keydown', event => {
+        if (event.target !== zone || (event.key !== 'Enter' && event.key !== ' ') || zone.hidden || input.disabled) return;
+        event.preventDefault();
+        input.click();
+      });
+    }
+  });
   const nav = document.querySelector('[data-main-nav]');
   const menuButton = document.querySelector('[data-menu-toggle]');
   if (nav) {

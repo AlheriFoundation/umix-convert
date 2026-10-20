@@ -26,6 +26,15 @@
   <meta name="twitter:description" content="Convert PDF, images, documents and other supported files online for free with UMiX Converter. Simple browser-based tools for fast, convenient file conversion.">
   <meta name="twitter:image" content="https://www.umix-convert.online/images/umix-social-preview.png">
   <meta name="twitter:image:alt" content="UMiX Converter document conversion tools">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "UMiX Converter",
+    "alternateName": "UMiX",
+    "url": "https://www.umix-convert.online/"
+  }
+  </script>
 
 
 
@@ -43,7 +52,43 @@
 <body class="home-page">
 <header class="site-header"><div class="container nav-wrap"><a class="logo" href="index.html" aria-label="UMiX Converter home"><img class="logo-mark" src="images/icon-192.png" width="76" height="46" alt="UMiX Converter logo"><span>UMiX Converter</span></a><button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button><nav class="main-nav" id="main-navigation" data-main-nav aria-label="Main navigation"></nav><div class="nav-actions"><a class="search-link" href="#tool-search">Search</a></div></div></header>
   <main>
-    <section class="hero conversion-hero"><div class="container conversion-hero-inner"><div class="conversion-intro"><p class="eyebrow">Simple tools for everyday files</p><h1>Convert Your Files in Seconds</h1><p class="hero-copy">Convert PDFs, images, documents and more — quickly and easily, all in one place.</p></div><form class="conversion-selector" data-conversion-selector aria-labelledby="conversion-title"><div class="conversion-selector-heading"><div><p class="eyebrow">Start a conversion</p><h2 id="conversion-title">Choose your formats</h2></div><span class="conversion-selector-note">No upload needed yet</span></div><div class="conversion-fields"><div class="conversion-field"><label for="conversion-from">Convert from</label><select id="conversion-from" name="from" required><option value="" selected disabled>Choose a file format</option><option value="pdf">PDF</option><option value="jpg">JPG / JPEG</option><option value="png">PNG</option><option value="webp">WebP</option><option value="excel">Excel (.xls / .xlsx)</option><option value="csv">CSV</option><option value="txt">TXT</option><option value="pptx">PowerPoint (.pptx)</option><option value="docx">Word (.docx)</option></select></div><span class="conversion-arrow" aria-hidden="true">→</span><div class="conversion-field"><label for="conversion-to">Convert to</label><select id="conversion-to" name="to" required disabled><option value="" selected disabled>Choose a file format first</option></select></div></div><p class="conversion-status" data-conversion-status role="status" aria-live="polite">Choose a source format to see the available conversions.</p><button class="button button-primary conversion-submit" data-conversion-submit type="submit" disabled>Find Converter</button></form><div class="hero-trust" aria-label="Why use UMiX Converter"><span>Free to use</span><span>Browser-side processing</span><span>No sign-up required</span></div></div></section>
+    <section class="hero conversion-hero">
+      <div class="container conversion-hero-inner">
+        <div class="conversion-intro">
+          <p class="eyebrow">Simple tools for everyday files</p>
+          <h1>Convert Your Files in Seconds</h1>
+          <p class="hero-copy">Convert PDFs, images, documents and more — quickly and easily, all in one place.</p>
+        </div>
+        <form class="conversion-selector" data-conversion-selector aria-labelledby="conversion-title">
+          <div class="conversion-selector-heading">
+            <div><p class="eyebrow">Start a conversion</p><h2 id="conversion-title">Choose your formats</h2></div>
+            <span class="conversion-selector-note">No upload needed yet</span>
+          </div>
+          <div class="conversion-fields">
+            <div class="conversion-field">
+              <label for="conversion-from">Convert from</label>
+              <select id="conversion-from" name="from" required>
+                <option value="" selected disabled>Choose a file format</option><option value="pdf">PDF</option><option value="jpg">JPG / JPEG</option><option value="png">PNG</option><option value="webp">WebP</option><option value="excel">Excel (.xls / .xlsx)</option><option value="csv">CSV</option><option value="txt">TXT</option><option value="pptx">PowerPoint (.pptx)</option><option value="docx">Word (.docx)</option>
+              </select>
+            </div>
+            <span class="conversion-arrow" aria-hidden="true">→</span>
+            <div class="conversion-field">
+              <label for="conversion-to">Convert to</label>
+              <select id="conversion-to" name="to" required disabled><option value="" selected disabled>Choose a file format first</option></select>
+            </div>
+          </div>
+          <p class="conversion-status" data-conversion-status role="status" aria-live="polite">Choose a source format to see the available conversions.</p>
+          <div class="conversion-actions">
+            <button class="button button-primary conversion-submit" data-conversion-submit type="submit" disabled>Start Converting</button>
+            <div class="compression-cta">
+              <a class="button button-secondary" href="tools.html#compression-options">Compress Files</a>
+              <span>Reduce Image/PDF Size</span>
+            </div>
+          </div>
+        </form>
+        <div class="hero-trust" aria-label="Why use UMiX Converter"><span>Free to use</span><span>Browser-side processing</span><span>No sign-up required</span></div>
+      </div>
+    </section>
 <section class="tool-search" id="tool-search" aria-label="Search for a tool"><div class="container"><div class="search-box"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><label class="sr-only" for="tool-search-input">Search for a tool</label><input id="tool-search-input" data-tool-search type="search" placeholder="Search tools, formats, or tasks..."></div><p class="search-hints"><span>Try:</span> Merge PDF · Compress Image · JSON Formatter · URL Encoder</p></div></section>
     <section class="section" aria-labelledby="popular-title"><div class="container"><div class="section-heading"><div><p class="eyebrow">Start here</p><h2 id="popular-title">Popular tools</h2></div><p>Quick access to the tasks people use most often.</p></div><div class="tool-grid">
       <a class="tool-card" data-tool-card href="tools/merge-pdf.html"><span class="tool-icon">PDF</span><h3>Merge PDF</h3><p>Bring multiple PDF files together in order.</p><span class="tool-link">Open tool →</span></a><a class="tool-card" data-tool-card href="tools/split-pdf.html"><span class="tool-icon">PDF</span><h3>Split PDF</h3><p>Separate pages from a PDF file.</p><span class="tool-link">Open tool →</span></a><a class="tool-card" data-tool-card href="tools/compress-pdf.html"><span class="tool-icon">PDF</span><h3>Compress PDF</h3><p>Prepare a smaller PDF for sharing.</p><span class="tool-link">Open tool →</span></a><a class="tool-card" data-tool-card href="tools/pdf-to-word.html"><span class="tool-icon">PDF</span><h3>PDF to Word</h3><p>Extract selectable PDF text into an editable Word document.</p><span class="tool-link">Open tool →</span></a><a class="tool-card" data-tool-card href="tools/pdf-to-excel.html"><span class="tool-icon">PDF</span><h3>PDF to Excel</h3><p>Extract PDF text and approximate table data into an Excel workbook.</p><span class="tool-link">Open tool →</span></a><a class="tool-card" data-tool-card href="tools/word-to-pdf.html"><span class="tool-icon">DOCX</span><h3>Word to PDF</h3><p>Convert supported DOCX documents into PDF.</p><span class="tool-link">Open tool →</span></a>
