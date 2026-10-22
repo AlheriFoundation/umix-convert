@@ -150,38 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyright = footer.querySelector('.copyright');
   if (copyright) copyright.textContent = '© 2026 UMiX Converter. All rights reserved. by ABKAB Smart Solution';
 });
-const insertAdsterraBanner = () => {
-  const adHost = document.querySelector('main');
-  if (!adHost || document.querySelector('[data-adsterra-banner]')) return;
-  const ad = document.createElement('section');
-  ad.className = 'adsterra-banner';
-  ad.dataset.adsterraBanner = '';
-  ad.setAttribute('aria-labelledby', 'advertisement-label');
-  ad.innerHTML = '<div class="container"><p class="ad-label" id="advertisement-label">Advertisement</p><div class="adsterra-frame" aria-label="Advertisement"></div></div>';
-  const placement = adHost.querySelector('.converter-section') || adHost.querySelector('.hero, .page-hero') || adHost.firstElementChild;
-  if (placement) placement.insertAdjacentElement('afterend', ad);
-  else adHost.append(ad);
-  const frame = ad.querySelector('.adsterra-frame');
-  const options = document.createElement('script');
-  options.text = "atOptions = { 'key' : '83947ac1d9bcda07921e4bc03cebdd02', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };";
-  const script = document.createElement('script');
-  script.src = 'https://bauval.org/22/83947ac1d9bcda07921e4bc03cebdd02';
-  frame.append(options, script);
-};
-
-document.addEventListener('DOMContentLoaded', insertAdsterraBanner);
-const insertMonetagInPagePush = () => {
-  if (document.querySelector('script[data-zone="12058882"][src="https://nap5k.com/tag.min.js"]')) return;
-  (function(s){s.dataset.zone='12058882',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-};
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', insertMonetagInPagePush);
-} else {
-  insertMonetagInPagePush();
-}
-
-
 let deferredInstallPrompt = null;
 
 const isStandaloneApp = () => window.matchMedia('(display-mode: standalone)').matches
