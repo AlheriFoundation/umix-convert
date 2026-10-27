@@ -2203,3 +2203,62 @@ h1, h2, h3, h4 { color: var(--navy-900); }
   .converter-card-header h2, .results-heading h2 { font-size: 21px; }
   .upload-zone { min-height: 210px; padding: 20px 14px; }
 }
+
+.home-page .conversion-field {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  .home-page .conversion-hero {
+    padding-block: 22px 26px;
+    background: linear-gradient(135deg, #0f2b5c, #1e40af);
+  }
+  .home-page .conversion-hero-inner { gap: 14px; }
+  .home-page .conversion-intro .eyebrow { margin-bottom: 6px; padding: 3px 9px; font-size: 10px; }
+  .home-page .conversion-intro h1 { margin-bottom: 6px; font-size: clamp(25px, 7vw, 30px); line-height: 1.12; letter-spacing: 0; }
+  .home-page .conversion-intro .hero-copy { max-width: 34ch; font-size: 14px; line-height: 1.45; }
+  .home-page .hero-trust { display: none; }
+  .home-page .conversion-selector { padding: 12px; border-radius: 14px; box-shadow: none; }
+  .home-page .conversion-selector-heading { align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 8px; }
+  .home-page .conversion-selector-heading .eyebrow { display: none; }
+  .home-page .conversion-selector-heading h2 { font-size: 18px; line-height: 1.25; }
+  .home-page .conversion-selector-note { padding: 4px 7px; font-size: 10px; }
+  .home-page .conversion-fields { grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr); gap: 6px; }
+  .home-page .conversion-field label { margin-bottom: 4px; font-size: 10px; letter-spacing: .04em; }
+  .home-page .conversion-field select { min-height: 44px; padding-inline: 8px 24px; font-size: 13px; }
+  .home-page .conversion-arrow { width: 30px; height: 30px; line-height: 30px; font-size: 20px; }
+  .home-page .quick-dropzone { margin-block: 8px; padding: 9px 10px; gap: 8px; }
+  .home-page .quick-dropzone p { margin: 0; font-size: 13px; line-height: 1.4; }
+  .home-page .quick-dropzone small,
+  .home-page .search-hints,
+  .home-page .compression-cta span { display: none; }
+  .home-page .conversion-status { min-height: 0; margin: 6px 0 8px; font-size: 12px; line-height: 1.4; }
+  .home-page .conversion-actions { gap: 6px; margin-top: 0; }
+  .home-page .conversion-submit { width: 100%; min-height: 44px; }
+  .home-page .compression-cta .button {
+    min-width: 0;
+    min-height: 32px;
+    padding: 4px 10px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--navy-900);
+    font-size: 12px;
+    text-decoration: underline;
+  }
+}
+
+.home-page .conversion-hero {
+  background: linear-gradient(135deg, #0f2b5c 0%, #1e40af 68%, #3153a4 100%);
+}
+
+@media (min-width: 601px) {
+  .home-page .conversion-hero { padding-block: 34px 38px; }
+  .home-page .conversion-hero-inner { gap: 16px; }
+  .home-page .conversion-intro h1 { font-size: clamp(34px, 4vw, 46px); letter-spacing: 0; }
+  .home-page .conversion-selector { padding: 14px 18px; box-shadow: none; }
+  .home-page .conversion-actions { display: flex; flex-direction: row; align-items: center; gap: 12px; }
+  .home-page .compression-cta { display: block; }
+}
