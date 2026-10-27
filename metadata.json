@@ -1,0 +1,8 @@
+{
+  "name": "UMiX Converter",
+  "description": "Free online browser-based file converter for PDF, images, documents, spreadsheets, and utility tools.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

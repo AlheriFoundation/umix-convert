@@ -105,6 +105,97 @@
     const conversion = selectedConversion();
     if (conversion) window.location.assign(conversion.page);
   });
+
+  // Quick Dropzone auto-detection
+  const dropzone = document.querySelector('[data-quick-dropzone]');
+  const quickBrowse = document.querySelector('[data-quick-browse]');
+  const quickInput = document.createElement('input');
+  quickInput.type = 'file';
+  quickInput.style.display = 'none';
+  quickInput.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(quickInput);
+
+  function detectFormat(file) {
+    if (!file) return null;
+    const name = file.name.toLowerCase();
+    if (/\.pdf$/i.test(name)) return 'pdf';
+    if (/\.jpe?g$/i.test(name)) return 'jpg';
+    if (/\.png$/i.test(name)) return 'png';
+    if (/\.webp$/i.test(name)) return 'webp';
+    if (/\.xlsx?$/i.test(name)) return 'excel';
+    if (/\.csv$/i.test(name)) return 'csv';
+    if (/\.docx$/i.test(name)) return 'docx';
+    if (/\.pptx$/i.test(name)) return 'pptx';
+    if (/\.txt$/i.test(name)) return 'txt';
+    return null;
+  }
+
+  function handleQuickFile(file) {
+    if (!file) return;
+    const fmt = detectFormat(file);
+    if (fmt) {
+      from.value = fmt;
+      updateTargetOptions();
+      updateAvailability();
+      if (dropzone) {
+        dropzone.classList.add('has-file');
+        const p = dropzone.querySelector('p');
+        if (p) p.innerHTML = `<strong>Selected file:</strong> ${file.name} (${fmt.toUpperCase()})`;
+      }
+      status.textContent = `Detected ${file.name}. Choose an output format and click Start Converting.`;
+      status.dataset.state = 'supported';
+    } else {
+      status.textContent = `Unrecognized format for ${file.name}. Please select formats from the list.`;
+      status.dataset.state = 'unsupported';
+    }
+  }
+
+  if (quickBrowse) {
+    quickBrowse.addEventListener('click', (e) => {
+      e.preventDefault();
+      quickInput.click();
+    });
+  }
+
+  quickInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files[0]) {
+      handleQuickFile(e.target.files[0]);
+    }
+  });
+
+  if (dropzone) {
+    let dragCounter = 0;
+    dropzone.addEventListener('click', (e) => {
+      if (e.target !== quickBrowse && !e.target.closest('button')) {
+        quickInput.click();
+      }
+    });
+    dropzone.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      dragCounter++;
+      dropzone.classList.add('is-dragging');
+    });
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('is-dragging');
+    });
+    dropzone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dragCounter = Math.max(0, dragCounter - 1);
+      if (dragCounter === 0) {
+        dropzone.classList.remove('is-dragging');
+      }
+    });
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dragCounter = 0;
+      dropzone.classList.remove('is-dragging');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleQuickFile(e.dataTransfer.files[0]);
+      }
+    });
+  }
+
   updateTargetOptions();
   updateAvailability();
 })();

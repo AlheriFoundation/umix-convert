@@ -1,1 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg"><symbol id="pdf" viewBox="0 0 24 24"><path d="M6 2.75h8l4 4v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.75v4h4M8.5 14.5h2.1a1.5 1.5 0 0 0 0-3H8.5v5M13.5 16.5v-5h1.3a2.5 2.5 0 0 1 0 5h-1.3M18 11.5h-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="merge" viewBox="0 0 24 24"><path d="M5 5h7v7H5zM12 12h7v7h-7zM12 8h4M16 8l-2-2M16 8l-2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="split" viewBox="0 0 24 24"><path d="M5 4h6v6H5zM13 14h6v6h-6zM11 7h2v4l3 3M13 11l-3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9" r="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m5 17 4.5-4 3 2.5 2-2 4.5 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="document" viewBox="0 0 24 24"><path d="M6 2.75h8l4 4v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.75v4h4M9 12h6M9 15.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="spreadsheet" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16M4 14h16M10 9v12M15 9v12" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="text" viewBox="0 0 24 24"><path d="M5 5h14M8 9h8M6 13h12M8 17h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol><symbol id="code" viewBox="0 0 24 24"><path d="m9 7-5 5 5 5M15 7l5 5-5 5M13 4l-2 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="link" viewBox="0 0 24 24"><path d="m9 15-2 2a3.5 3.5 0 0 1-5-5l3-3a3.5 3.5 0 0 1 5 0M15 9l2-2a3.5 3.5 0 0 1 5 5l-3 3a3.5 3.5 0 0 1-5 0M8 12h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol><symbol id="compress" viewBox="0 0 24 24"><path d="M5 5h14v14H5zM9 9h6v6H9zM9 5v4M15 5v4M9 15v4M15 15v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="crop" viewBox="0 0 24 24"><path d="M7 3v14h14M3 7h14v14M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="counter" viewBox="0 0 24 24"><path d="M5 5h14M5 9h10M5 13h14M5 17h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="17" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M20.2 19.2 22 21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="size" viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 8h8M8 12h5M8 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="pdf" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.8 11.2h2.2a1.3 1.3 0 0 1 0 2.6H7.8v3.2M12.8 17v-5.8h1.4a2.2 2.2 0 0 1 0 4.4h-1.4M16.5 11.2h2.5M16.5 13.8h1.8" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="word" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#EFF6FF" stroke="#185ABD" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#185ABD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.5 11.5l1.6 6 1.4-4.5 1.4 4.5 1.6-6" stroke="#185ABD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="excel" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#F0FDF4" stroke="#107C41" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#107C41" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 11.8l3.6 5.4M11.6 11.8l-3.6 5.4M14 12.8h3M14 15.5h3" stroke="#107C41" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="powerpoint" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#FFF7ED" stroke="#D24726" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#D24726" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 11.5h3.2a1.8 1.8 0 0 1 0 3.6H8v2.4" stroke="#D24726" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 17a3 3 0 0 0 3-3" stroke="#D24726" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="jpg" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2.5" fill="#FFF1EE" stroke="#EA580C" stroke-width="1.6"/>
+    <circle cx="8" cy="9" r="1.5" fill="#EA580C"/>
+    <path d="m4.5 17.5 5-4.5 3.5 3 2.5-2 4 3.5" stroke="#EA580C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="png" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2.5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+    <circle cx="8" cy="9" r="1.5" fill="#7C3AED"/>
+    <path d="m4.5 17.5 5-4.5 3.5 3 2.5-2 4 3.5" stroke="#7C3AED" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="image" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2.5" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.6"/>
+    <circle cx="8" cy="9" r="1.5" fill="#0284C7"/>
+    <path d="m4.5 17.5 5-4.5 3.5 3 2.5-2 4 3.5" stroke="#0284C7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="crop" viewBox="0 0 24 24">
+    <path d="M6.5 3v14.5h14.5M3 6.5h14.5v14.5" stroke="#0284C7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="6.5" y="6.5" width="11" height="11" fill="#E0F2FE" fill-opacity="0.4"/>
+  </symbol>
+  <symbol id="zip" viewBox="0 0 24 24">
+    <path d="M4 6a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z" fill="#FEF9C3" stroke="#B45309" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M12 7.5v1.5M10.5 9h3M12 10.5v1.5M10.5 12h3M12 13.5v2" stroke="#B45309" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="10.5" y="15.5" width="3" height="3.5" rx="0.75" fill="#B45309"/>
+  </symbol>
+  <symbol id="archive" viewBox="0 0 24 24">
+    <path d="M4 6a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z" fill="#FEF9C3" stroke="#B45309" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M12 7.5v1.5M10.5 9h3M12 10.5v1.5M10.5 12h3M12 13.5v2" stroke="#B45309" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="10.5" y="15.5" width="3" height="3.5" rx="0.75" fill="#B45309"/>
+  </symbol>
+  <symbol id="csv" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#ECFDF5" stroke="#059669" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#059669" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 12.5h8M8 15.5h5" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="15.5" cy="15.5" r="1.2" fill="#059669"/>
+  </symbol>
+  <symbol id="text" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#F8FAFC" stroke="#475569" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 12h8M8 15h8M8 18h5" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="json" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#FEFCE8" stroke="#D97706" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#D97706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.5 11c-.8 0-1.5.5-1.5 1.2v.6c0 .5-.5.8-.8.8.3 0 .8.3.8.8v.6c0 .7.7 1.2 1.5 1.2M14.5 11c.8 0 1.5.5 1.5 1.2v.6c0 .5.5.8.8.8-.3 0-.8.3-.8.8v.6c0 .7-.7 1.2-1.5 1.2" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </symbol>
+  <symbol id="code" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#4F46E5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m9.5 12-2 2.5 2 2.5M14.5 12l2 2.5-2 2.5M12.5 11l-1 6" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="link" viewBox="0 0 24 24">
+    <path d="M9 15l-1.5 1.5a3.5 3.5 0 0 1-5-5L4 10a3.5 3.5 0 0 1 5 0M15 9l1.5-1.5a3.5 3.5 0 0 1 5 5L20 14a3.5 3.5 0 0 1-5 0M8.5 12h7" stroke="#0284C7" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  </symbol>
+  <symbol id="size" viewBox="0 0 24 24">
+    <rect x="4" y="4" width="16" height="16" rx="3" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+    <circle cx="8" cy="8.5" r="1.5" fill="#0D9488"/>
+    <path d="M12 8.5h4M8 12.5h8M8 15.5h5" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="merge" viewBox="0 0 24 24">
+    <rect x="4" y="4" width="10" height="13" rx="1.5" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <rect x="10" y="7" width="10" height="13" rx="1.5" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <path d="M12 13h4M14 11v4" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="split" viewBox="0 0 24 24">
+    <path d="M4 4h6v16H4a1.5 1.5 0 0 1-1.5-1.5V5.5A1.5 1.5 0 0 1 4 4zM14 4h6a1.5 1.5 0 0 1 1.5 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-6V4z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <path d="M12 3v18" stroke="#DC2626" stroke-width="1.6" stroke-dasharray="2 2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="compress-pdf" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M12 10.5v5.5M9.8 13.8l2.2 2.2 2.2-2.2M9.5 10.5h5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="compress" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M12 10.5v5.5M9.8 13.8l2.2 2.2 2.2-2.2M9.5 10.5h5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="compress-image" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2.5" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.6"/>
+    <circle cx="7.5" cy="8.5" r="1.5" fill="#0284C7"/>
+    <path d="M12 10.5v5.5M9.8 13.8l2.2 2.2 2.2-2.2M9.5 10.5h5" stroke="#0284C7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="counter" viewBox="0 0 24 24">
+    <path d="M5 4h9l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="4.5" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+    <path d="M14.5 14.5h3M14.5 17.5h3M15.5 13.5v5.5" stroke="#DC2626" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="metadata" viewBox="0 0 24 24">
+    <path d="M5 4h9l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="4.5" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+    <path d="M16 14v2.5M16 18.5v.5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="document" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#EFF6FF" stroke="#185ABD" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#185ABD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.5 11.5l1.6 6 1.4-4.5 1.4 4.5 1.6-6" stroke="#185ABD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="spreadsheet" viewBox="0 0 24 24">
+    <path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h9l4.5 4.5v14a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 20.5v-17z" fill="#F0FDF4" stroke="#107C41" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M15.5 2v4.5H20" stroke="#107C41" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 11.8l3.6 5.4M11.6 11.8l-3.6 5.4M14 12.8h3M14 15.5h3" stroke="#107C41" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>

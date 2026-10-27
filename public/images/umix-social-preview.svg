@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">UMiX Converter — Convert. Compress. Simplify.</title>
+  <desc id="desc">A premium document conversion workspace for PDFs, images, documents, and text.</desc>
+  <rect width="1200" height="630" fill="#F8F7F2"/>
+  <circle cx="1090" cy="70" r="170" fill="#EBF1FD" opacity=".8"/>
+  <circle cx="105" cy="585" r="150" fill="#F2E6C8" opacity=".5"/>
+  <path d="M0 0h1200v14H0z" fill="#10233F"/>
+  <path d="M0 616h1200v14H0z" fill="#D4A84F"/>
+
+  <image href="umix-convert-official-logo-384.png" x="92" y="100" width="76" height="76"/>
+  <text x="190" y="176" fill="#10233F" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-1.5">UMiX Converter</text>
+  <rect x="94" y="238" width="90" height="5" rx="2.5" fill="#D4A84F"/>
+  <text x="92" y="315" fill="#10233F" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Convert. Compress.</text>
+  <text x="92" y="385" fill="#2457D6" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Simplify.</text>
+  <text x="94" y="438" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="23">Simple browser-based tools for everyday files.</text>
+  <text x="94" y="478" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">PDFs · Images · Documents · Text</text>
+
+  <g transform="translate(735 112)">
+    <rect x="68" y="42" width="250" height="318" rx="18" fill="#fff" stroke="#E3E8EF" stroke-width="3" transform="rotate(7 193 201)"/>
+    <path d="M252 56v83h83" fill="#EBF1FD" transform="rotate(7 293 97)"/>
+    <path d="M252 56l83 83h-65c-10 0-18-8-18-18z" fill="#D5E2FA" transform="rotate(7 293 97)"/>
+    <rect x="128" y="148" width="120" height="43" rx="10" fill="#10233F" transform="rotate(7 188 170)"/>
+    <text x="153" y="178" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" transform="rotate(7 188 170)">PDF</text>
+    <rect x="126" y="222" width="120" height="10" rx="5" fill="#E3E8EF" transform="rotate(7 186 227)"/>
+    <rect x="132" y="250" width="86" height="10" rx="5" fill="#E3E8EF" transform="rotate(7 175 255)"/>
+    <rect x="72" y="78" width="250" height="318" rx="18" fill="#fff" stroke="#E3E8EF" stroke-width="3" transform="rotate(-8 197 237)"/>
+    <path d="M245 94v83h83" fill="#F2E6C8" transform="rotate(-8 286 135)"/>
+    <path d="M245 94l83 83h-65c-10 0-18-8-18-18z" fill="#EBD9A8" transform="rotate(-8 286 135)"/>
+    <rect x="129" y="186" width="128" height="43" rx="10" fill="#2457D6" transform="rotate(-8 193 207)"/>
+    <text x="151" y="216" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" transform="rotate(-8 193 207)">DOCX</text>
+    <rect x="126" y="264" width="120" height="10" rx="5" fill="#E3E8EF" transform="rotate(-8 186 269)"/>
+    <rect x="132" y="292" width="86" height="10" rx="5" fill="#E3E8EF" transform="rotate(-8 175 297)"/>
+    <path d="M-16 232h72l-18-18m18 18-18 18" fill="none" stroke="#D4A84F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="232" r="34" fill="#F2E6C8" opacity=".75"/>
+  </g>
+</svg>

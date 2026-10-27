@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroHeading = document.querySelector('.hero h1');
   const heroCopy = document.querySelector('.hero .hero-copy');
   if (heroHeading && document.body.classList.contains('home-page')) {
-    heroHeading.innerHTML = 'Convert Your Files <span class="hero-accent">in Seconds</span>';
-    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and more — quickly and easily, all in one place.';
+    heroHeading.innerHTML = 'Free Online File <span class="hero-accent">Converting</span>';
+    if (heroCopy) heroCopy.textContent = 'Convert PDFs, images, documents and spreadsheets quickly and safely — 100% processed locally in your browser.';
   }
   new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(normaliseNode))).observe(document.documentElement, { childList: true, subtree: true });
   const pageIsTool = /\/tools\//.test(window.location.pathname) || window.location.pathname.endsWith('/tools');
@@ -47,9 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuButton = document.querySelector('[data-menu-toggle]');
   if (nav) {
     nav.replaceChildren();
-    [['Home', `${base}index.html`, 'home'], ['All tools', `${base}tools.html`, 'tools']].forEach(([label, href, key]) => { const link = document.createElement('a'); link.href = href; link.textContent = label; link.dataset.navKey = key; nav.append(link); });
+    [['Home', `${base}index.html`, 'home'], ['Tools', `${base}tools.html`, 'tools']].forEach(([label, href, key]) => { const link = document.createElement('a'); link.href = href; link.textContent = label; link.dataset.navKey = key; nav.append(link); });
     const menu = document.createElement('details'); menu.className = 'nav-category-menu'; const summary = document.createElement('summary'); summary.textContent = 'Categories'; summary.setAttribute('aria-haspopup', 'true'); menu.append(summary);
     [['PDF tools', 'pdf-tools.html', 'pdf'], ['Image tools', 'image-tools.html', 'image'], ['Document tools', 'document-tools.html', 'document']].forEach(([label, href, key]) => { const link = document.createElement('a'); link.href = `${base}${href}`; link.textContent = label; link.dataset.navKey = key; menu.append(link); }); nav.append(menu);
+    const aboutLink = document.createElement('a'); aboutLink.href = `${base}about.html`; aboutLink.textContent = 'About'; aboutLink.dataset.navKey = 'about'; nav.append(aboutLink);
     const current = window.location.pathname.split('/').pop() || 'index.html'; nav.querySelectorAll('a').forEach(link => { if (link.getAttribute('href').endsWith(current)) link.setAttribute('aria-current', 'page'); }); const category = /pdf-/.test(current) || /merge-pdf|split-pdf|compress-pdf/.test(current) ? 'pdf' : /image|jpg|png|compress-image|crop/.test(current) ? 'image' : /word|excel|csv|powerpoint|txt-to-pdf/.test(current) ? 'document' : ''; if (category) nav.querySelector(`[data-nav-key="${category}"]`)?.setAttribute('aria-current', 'page');
   }
   const closeNavigation = () => {
@@ -77,7 +78,48 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  const iconFor = href => { const name = href.split('/').pop().replace('.html', ''); if (/merge/.test(name)) return 'merge'; if (/split/.test(name)) return 'split'; if (/compress/.test(name)) return 'compress'; if (/crop/.test(name)) return 'crop'; if (/counter/.test(name)) return 'counter'; if (/size/.test(name)) return 'size'; if (/json|base64/.test(name)) return 'code'; if (/url-/.test(name)) return 'link'; if (/excel|csv/.test(name)) return 'spreadsheet'; if (/word|powerpoint|txt/.test(name)) return 'document'; if (/image|jpg|png/.test(name)) return 'image'; return 'pdf'; };
+  const iconFor = href => {
+    const name = href.split('/').pop().replace('.html', '');
+    if (/merge/.test(name)) return 'merge';
+    if (/split/.test(name)) return 'split';
+    if (/compress-pdf/.test(name)) return 'compress-pdf';
+    if (/compress-image/.test(name)) return 'compress-image';
+    if (/counter/.test(name)) return 'counter';
+    if (/metadata/.test(name)) return 'metadata';
+    if (/crop/.test(name)) return 'crop';
+    if (/size/.test(name)) return 'size';
+    if (/json/.test(name)) return 'json';
+    if (/base64/.test(name)) return 'code';
+    if (/url-/.test(name)) return 'link';
+    if (/word-counter|txt-to-pdf|pdf-to-text/.test(name)) return 'text';
+    if (/word-to-pdf/.test(name)) return 'word';
+    if (/excel-to-/.test(name)) return 'excel';
+    if (/csv-to-excel/.test(name)) return 'csv';
+    if (/powerpoint/.test(name)) return 'powerpoint';
+    if (/jpg-to-/.test(name)) return 'jpg';
+    if (/png-to-/.test(name)) return 'png';
+    if (/image-to-/.test(name)) return 'image';
+    if (/zip|archive/.test(name)) return 'zip';
+    if (/pdf/.test(name)) return 'pdf';
+    return 'pdf';
+  };
+  const formatClassFor = href => {
+    const name = href.split('/').pop().replace('.html', '');
+    if (/word-to-pdf/.test(name)) return 'tool-icon-word';
+    if (/excel/.test(name)) return 'tool-icon-excel';
+    if (/csv/.test(name)) return 'tool-icon-csv';
+    if (/powerpoint/.test(name)) return 'tool-icon-pptx';
+    if (/jpg-to-/.test(name)) return 'tool-icon-jpg';
+    if (/png-to-/.test(name)) return 'tool-icon-png';
+    if (/image|crop|compress-image/.test(name)) return 'tool-icon-image';
+    if (/json/.test(name)) return 'tool-icon-json';
+    if (/base64/.test(name)) return 'tool-icon-code';
+    if (/url/.test(name)) return 'tool-icon-url';
+    if (/size/.test(name)) return 'tool-icon-size';
+    if (/word-counter|txt-to-pdf|pdf-to-text/.test(name)) return 'tool-icon-txt';
+    if (/zip|archive/.test(name)) return 'tool-icon-zip';
+    return 'tool-icon-pdf';
+  };
   const categoryFor = href => { const name = href.split('/').pop().replace('.html', ''); if (/pdf|merge|split|compress-pdf/.test(name)) return 'pdf'; if (/image|jpg|png|crop|compress-image/.test(name)) return 'image'; if (/word|excel|csv|powerpoint|txt-to-pdf/.test(name)) return 'document'; return 'utility'; };
   const toolCardCopy = {
     'pdf-to-word.html': { badge: 'PDF', description: 'Extract selectable PDF text into an editable Word document.', hero: 'Extract PDF text into an editable Word document. Complex layouts, tables, and logos may not be preserved exactly.' },
@@ -90,8 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
     'powerpoint-to-pdf.html': { badge: 'PPTX', description: 'Convert supported PPTX presentations into PDF.' },
     'powerpoint-to-images.html': { badge: 'PPTX', description: 'Export supported PPTX slides as JPG or PNG images.' }
   };
-  document.querySelectorAll('.tool-icon').forEach(icon => { const card = icon.closest('a'); const href = card ? card.getAttribute('href') : ''; const iconId = iconFor(href); const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true'); const use = document.createElementNS('http://www.w3.org/2000/svg', 'use'); use.setAttribute('href', `${base}images/tool-icons.svg#${iconId}`); svg.append(use); icon.replaceChildren(svg); icon.setAttribute('aria-hidden', 'true'); icon.dataset.toolIcon = iconId; if (card) card.dataset.toolCategory = categoryFor(href); });
-  document.querySelectorAll('.tool-card').forEach(card => { const href = (card.getAttribute('href') || '').split('/').pop(); const copy = toolCardCopy[href]; if (copy) { const badge = card.querySelector('.tool-icon'); const description = card.querySelector('p'); if (badge) badge.replaceChildren(document.createTextNode(copy.badge)); if (description) description.textContent = copy.description; } });
+  document.querySelectorAll('.tool-icon').forEach(icon => {
+    const card = icon.closest('a');
+    const href = card ? card.getAttribute('href') : '';
+    const iconId = iconFor(href);
+    const formatClass = formatClassFor(href);
+    if (formatClass) icon.classList.add(formatClass);
+    if (!icon.querySelector('svg')) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('class', 'tool-svg');
+      svg.setAttribute('aria-hidden', 'true');
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', `${base}images/tool-icons.svg#${iconId}`);
+      svg.append(use);
+      icon.replaceChildren(svg);
+    }
+    icon.setAttribute('aria-hidden', 'true');
+    icon.dataset.toolIcon = iconId;
+    if (card) card.dataset.toolCategory = categoryFor(href);
+  });
+  document.querySelectorAll('.tool-card').forEach(card => {
+    const href = (card.getAttribute('href') || '').split('/').pop();
+    const copy = toolCardCopy[href];
+    if (copy) {
+      const description = card.querySelector('p');
+      if (description) description.textContent = copy.description;
+    }
+  });
   const pageCopy = toolCardCopy[window.location.pathname.split('/').pop()];
   if (pageCopy && /\/tools\//.test(window.location.pathname)) { const uploadBadge = document.querySelector('.upload-icon'); if (uploadBadge) uploadBadge.textContent = pageCopy.badge; if (pageCopy.hero) { const hero = document.querySelector('.tool-hero p:not(.eyebrow)'); if (hero) hero.textContent = pageCopy.hero; } }
   document.querySelectorAll('.tool-card[href*="pdf-to-text.html"], .tool-card[href*="word-counter.html"], .tool-card[href*="txt-to-pdf.html"]').forEach(card => { const use = card.querySelector('.tool-icon use'); if (use) use.setAttribute('href', `${base}images/tool-icons.svg#text`); });
